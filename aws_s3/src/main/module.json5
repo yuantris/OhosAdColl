@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "aws_s3",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

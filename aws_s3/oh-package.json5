@@ -1,0 +1,12 @@
+{
+  "name": "@zycore/aws-s3",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "Index.ets",
+  "author": "zy-xfy",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ohos/aws-sdk-client-s3": '1.0.0',
+    "@zycore/common": "latest"
+  }
+}

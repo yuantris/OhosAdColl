@@ -1,0 +1,62 @@
+{
+  "module": {
+    "name": "GDTUnionDemo",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "DemoAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "compressNativeLibs": true,
+    "pages": "$profile:main_pages",
+    "routerMap": "$profile:router_map",
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
+      {
+        "name": "ohos.permission.VIBRATE"
+      },
+      {
+        "name": "ohos.permission.APP_TRACKING_CONSENT",
+        "reason": "$string:oaid_reason",
+        "usedScene": {
+          "when": "always"
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "name": "DemoAbility",
+        "srcEntry": "./ets/ability/DemoAbility.ets",
+        "description": "$string:DemoAbility_desc",
+        "icon": "$media:app_icon",
+        "label": "$string:DemoAbility_label",
+        "startWindowIcon": "$media:app_start_logo",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      }
+    ],
+    "querySchemes": [
+      "weixin",
+      "wxopensdk",
+    ]
+  }
+}

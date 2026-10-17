@@ -1,0 +1,106 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\yuant\\.ohos\\config\\default_OhosAdCore_62nrpmvy5CZ2oHdmkMwHx5F5H8IT5g5LTfQC6dsPEyw=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001B107E24615751DA9D3CAFC98A947A3213F67215A43C8AD390052B3963AA7C741E26327F3551889D",
+          "profile": "C:\\Users\\yuant\\.ohos\\config\\default_OhosAdCore_62nrpmvy5CZ2oHdmkMwHx5F5H8IT5g5LTfQC6dsPEyw=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\yuant\\.ohos\\config\\default_OhosAdCore_62nrpmvy5CZ2oHdmkMwHx5F5H8IT5g5LTfQC6dsPEyw=.p12",
+          "storePassword": "0000001BA13012C1DF7CE909B6857F7BAF987465364F0D8563B1EDF0B4920F6773292EF548CE334830F072"
+        }
+      },
+      {
+        "name": "release",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "./file/夏青发布证书.cer",
+          "keyAlias": "jzhm1",
+          "keyPassword": "00000018F3A97DB55B03F5E5F7E09520FC6650A4288807BBB2057CDA8723420D73F48EA8B4D04133",
+          "profile": "./file/快递超市发布证书Release.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "./file/jzhm1.p12",
+          "storePassword": "00000018D0E5F884A38DEEDE3B633AD7C82E8A53E04D3C6A66C193E9F0240BF7FF534A89B2DF1AD0"
+        }
+      },
+      {
+        "name": "debug",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\yuant\\.ohos\\config\\debug_OhosAdCore_62nrpmvy5CZ2oHdmkMwHx5F5H8IT5g5LTfQC6dsPEyw=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A9181BE93BAC1253E799FDFF82209813633D081619E83C24E71027AB6190D1EB3B7ED86CF51D6",
+          "profile": "C:\\Users\\yuant\\.ohos\\config\\debug_OhosAdCore_62nrpmvy5CZ2oHdmkMwHx5F5H8IT5g5LTfQC6dsPEyw=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\yuant\\.ohos\\config\\debug_OhosAdCore_62nrpmvy5CZ2oHdmkMwHx5F5H8IT5g5LTfQC6dsPEyw=.p12",
+          "storePassword": "0000001A3CFDFC74AD7179DE45F5567393DA99ABD9E7FC962E8489447A08560C6CD86279F24DC1FAF8F2"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "targetSdkVersion": "6.1.0(23)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        },
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "adCore",
+      "srcPath": "./AdCore"
+    },
+    {
+      "name": "adCoreV2",
+      "srcPath": "./AdCoreV2"
+    },
+    //    {
+    //      "name": "zyAds",
+    //      "srcPath": "./zyAds",
+    //    }
+    {
+      "name": "OhosRcpNet",
+      "srcPath": "./OhosRcpNet",
+    },
+    {
+      "name": "RcpNetV2",
+      "srcPath": "./RcpNetV2",
+    },
+    {
+      "name": "aws_s3",
+      "srcPath": "./aws_s3",
+    }
+  ]
+}

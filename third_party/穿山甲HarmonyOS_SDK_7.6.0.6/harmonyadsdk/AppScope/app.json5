@@ -1,0 +1,10 @@
+{
+  "app": {
+    "bundleName": "com.bytedance.sdk.openadsdk",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:icon",
+    "label": "$string:app_name"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@zysdk/ads",
+  "version": "1.0.0",
+  "description": "掌赢广告",
+  "main": "Index.ets",
+  "author": "zy_xfy",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "pako": "^2.1.0"
+  }
+}

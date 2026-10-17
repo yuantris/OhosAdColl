@@ -1,0 +1,32 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/selectIndex",
+    "adtype/feed/FeedAdPages",
+    "adtype/feed/FeedExpressAdPage",
+    "adtype/feed/FeedNativeAdPage",
+    "adtype/reward/RewardAdPage",
+    "adtype/banner/BannerAdPage",
+    "adtype/banner/BannerExpressAdPage",
+    "adtype/banner/BannerNativeAdPage",
+    "adtype/draw/DrawAdPage",
+    "adtype/draw/DrawExpressAdPage",
+    "adtype/draw/DrawNativeAdPage",
+    "adtype/full/FullAdPage",
+    "adtype/splash/SplashAdDemoPage",
+    "adtype/main/MainPage",
+    "adtype/splash/SplashAdShowPage",
+
+    "mediation_adtype/feed/FeedAdPages",
+    "mediation_adtype/feed/FeedNativeAdPage",
+    "mediation_adtype/reward/RewardAdPage",
+    "mediation_adtype/banner/BannerAdPage",
+    "mediation_adtype/banner/BannerExpressAdPage",
+    "mediation_adtype/draw/DrawAdPage",
+    "mediation_adtype/draw/DrawNativeAdPage",
+    "mediation_adtype/full/FullAdPage",
+    "mediation_adtype/splash/SplashAdDemoPage",
+    "mediation_adtype/main/MainPage",
+    "mediation_adtype/splash/SplashAdShowPage"
+  ]
+}

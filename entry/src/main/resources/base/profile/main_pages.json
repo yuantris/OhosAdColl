@@ -1,0 +1,18 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/Splash",
+    "pages/Guide",
+    "pages/CompanyPicker",
+    "pages/ExpressResult",
+    "pages/ExpressInfoSearch",
+    "pages/BarCodeScanning",
+    "pages/BarCodeResult",
+    "pages/InfoPage",
+    "pages/AreaSelect",
+    "pages/SearchResultPage",
+    "pages/AreaListPage",
+    "view/PrivatePage",
+    "view/UserPage"
+  ]
+}

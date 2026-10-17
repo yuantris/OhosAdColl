@@ -1,0 +1,10 @@
+{
+  "module": {
+    "name": "zyAds",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet"
+    ]
+  }
+}

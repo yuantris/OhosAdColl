@@ -1,0 +1,12 @@
+{
+  "name": "@gdt/gdt-union-demo",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@gdt/gdt-union-sdk": "file:./lib/GDTUnionSDK-default-release.har",
+    "@tencent/wechat_open_sdk": "1.0.20"
+  }
+}

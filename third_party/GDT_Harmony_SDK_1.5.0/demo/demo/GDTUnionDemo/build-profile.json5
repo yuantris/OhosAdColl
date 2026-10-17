@@ -1,0 +1,38 @@
+{
+  "apiType": "stageMode",
+  "buildOption": {
+    "arkOptions": {
+      "runtimeOnly": {
+        "packages": [
+          "@tencent/wechat_open_sdk"
+        ]
+      }
+    }
+  },
+  "buildOptionSet": [
+    {
+      "name": "release",
+      "arkOptions": {
+        "obfuscation": {
+          "ruleOptions": {
+            "enable": true,
+            "files": [
+              "./obfuscation-rules.txt"
+            ]
+          }
+        },
+        "branchElimination": true
+      }
+    },
+  ],
+  "targets": [
+    {
+      "name": "default",
+      "runtimeOS": "HarmonyOS"
+    },
+    {
+      "name": "ohosTest",
+      "runtimeOS": "HarmonyOS"
+    }
+  ]
+}

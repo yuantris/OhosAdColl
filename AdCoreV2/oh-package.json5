@@ -1,0 +1,25 @@
+{
+  "name": "@zysdk/ad-core-hm",
+  "version": "2.0.141-rc02",
+  "description": "掌赢HarmonyOS广告SDK V2版本",
+  "main": "Index.ets",
+  "author": "zy_xfy",
+  "license": "Apache-2.0",
+  "keywords": [
+    "SDK",
+    "OpenHarmony",
+    "HarmonyOS"
+  ],
+  "tags": [
+    "SDK"
+  ],
+  "dependencies": {
+    "@csj/openadsdk": "7.3.0",
+    "@gdt/gdt-union-sdk": "file:libs/GDTUnionSDK-1.5.0.har",
+    "@umeng/common": "latest",
+    "@umeng/analytics": "latest",
+    "@zycore/common": "latest",
+    // 日常联调用本地 RcpNetV2 [file:../RcpNetV2]；发版前切回 "^2.0.0"
+    "@creative/net": "^2.0.0"
+  },
+}

@@ -1,0 +1,48 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "app_name",
+      "value": "穿山甲Demo"
+    },
+    {
+      "name": "app_version",
+      "value": "0.0.1"
+    },
+    {
+      "name": "request_internet",
+      "value": "request_internet_for_ad_message"
+    },
+    {
+      "name": "request_tracking_consent",
+      "value": "request_tracking_consent_for_ad"
+    },
+    {
+      "name": "request_location",
+      "value": "request_location_for_convert"
+    },
+    {
+      "name": "request_approximately_location",
+      "value": "request_approximately_location_for_ad"
+    },
+    {
+      "name": "request_wifi_info",
+      "value": "request_wifi_info_for_security"
+    },
+    {
+      "name": "request_network_info",
+      "value": "request_request_network_info_for_ad_security"
+    }
+  ]
+}

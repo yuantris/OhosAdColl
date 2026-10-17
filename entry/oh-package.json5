@@ -1,0 +1,14 @@
+{
+  "name": "entry",
+  "version": "1.0.0",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "author": "",
+  "license": "",
+  "dependencies": {
+//    "@zysdk/ad-core-hm": "file:../AdCore",
+    "@zysdk/ad-core-hm": "file:../AdCoreV2",
+//    "@zysdk/ads": "file:../zyAds"
+  }
+}
+

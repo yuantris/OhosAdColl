@@ -1,0 +1,11 @@
+{
+  "app": {
+    "bundleName": "con.hmkd.xqq",
+    //    "bundleName": "con.hmkd.xqq", // 腾讯广告绑包名
+    "vendor": "zy",
+    "versionCode": 13,
+    "versionName": "13",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
+}

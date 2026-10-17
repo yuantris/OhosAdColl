@@ -1,0 +1,87 @@
+{
+  "module": {
+    "name": "demo",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "$string:request_internet",
+        "usedScene": {
+          "when": "always"
+        }
+      },
+      //获取ip用到了connection.getDefaultNet 和 connection.getConnectionProperties
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO",
+        "reason": "$string:request_network_info",
+        "usedScene": {
+          "when": "always"
+        }
+      },
+      //wifiManager.isWifiActive  wifiManager.isConnected  wifiManager.getLinkedInfo
+      {
+        "name": "ohos.permission.GET_WIFI_INFO",
+        "reason": "$string:request_wifi_info",
+        "usedScene": {
+          "when": "always"
+        }
+      },
+      //模糊地理位置，5公里
+      {
+        "name": "ohos.permission.APPROXIMATELY_LOCATION",
+        "reason": "$string:request_approximately_location",
+        "usedScene": {
+          "when": "always"
+        }
+      },
+      //获取米级别位置
+      {
+        "name": "ohos.permission.LOCATION",
+        "reason": "$string:request_location",
+        "usedScene": {
+          "when": "always"
+        }
+      },
+      //获取oaid
+      {
+        "name": "ohos.permission.APP_TRACKING_CONSENT",
+        "reason": "$string:request_tracking_consent",
+        "usedScene": {
+          "when": "always"
+        }
+      }
+    ],
+    "abilities": [
+      {
+        "name": "EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
+        "description": "$string:EntryAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

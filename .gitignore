@@ -1,0 +1,34 @@
+/node_modules
+/oh_modules
+/local.properties
+/.idea
+**/build
+/.hvigor
+.cxx
+/.clangd
+/.clang-format
+/.clang-tidy
+**/.test
+/.appanalyzer
+.trae/
+
+.arts/
+
+.vscode/
+
+.deveco/
+
+.cache/
+
+.idea/
+
+# AI 工具目录
+.kilo/
+.mimocode/
+.codebuddy/
+.codeartsdoer/
+.workbuddy/
+
+# 构建产物（任意层级）
+.preview/
+.cxx/

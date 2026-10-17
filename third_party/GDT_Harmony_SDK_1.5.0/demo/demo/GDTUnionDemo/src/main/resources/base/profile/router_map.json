@@ -1,0 +1,69 @@
+{
+  "routerMap": [
+    {
+      "name": "RewardPage",
+      "pageSourceFile": "src/main/ets/pages/RewardPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "SplashPage",
+      "pageSourceFile": "src/main/ets/pages/SplashPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "SplashNavNextPage",
+      "pageSourceFile": "src/main/ets/pages/SplashNavNextPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "InterstitialPage",
+      "pageSourceFile": "src/main/ets/pages/InterstitialPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "BannerPage",
+      "pageSourceFile": "src/main/ets/pages/BannerPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "NativeAdEntryPage",
+      "pageSourceFile": "src/main/ets/pages/NativeAdEntryPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "NativeAdSimplePage",
+      "pageSourceFile": "src/main/ets/pages/NativeAdSimplePage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "NativeAdListPage",
+      "pageSourceFile": "src/main/ets/pages/NativeAdListPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "NativeManualAdEntryPage",
+      "pageSourceFile": "src/main/ets/pages/NativeManualAdEntryPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "NativeManualAdSimplePage",
+      "pageSourceFile": "src/main/ets/pages/NativeManualAdSimplePage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "NativeManualAdListPage",
+      "pageSourceFile": "src/main/ets/pages/NativeManualAdListPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "BiddingSettingPage",
+      "pageSourceFile": "src/main/ets/pages/BiddingSettingPage.ets",
+      "buildFunction": "PageBuilder"
+    },
+    {
+      "name": "SettingsPage",
+      "pageSourceFile": "src/main/ets/pages/SettingsPage.ets",
+      "buildFunction": "PageBuilder"
+    }
+  ]
+}

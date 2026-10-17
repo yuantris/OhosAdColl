@@ -1,0 +1,22 @@
+{
+  "types": "Index.d.ts",
+  "keywords": [
+    "net",
+    "http",
+    "request",
+    "OpenHarmony",
+    "HarmonyOS"
+  ],
+  "author": "FFGreatKing",
+  "description": "远场服务通信RCP模块化封装",
+  "main": "request.ts",
+  "type": "module",
+  "version": "1.0.301",
+  "dependencies": {},
+  "tags": [
+    "Network"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {},
+  "name": "@creative/net"
+}

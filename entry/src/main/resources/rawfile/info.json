@@ -1,0 +1,2130 @@
+{
+  "adchs": [
+    "harmony",
+    "other"
+  ],
+  "ads": {
+    "csj": {
+      "appid": "",
+      "exit": "",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    },
+    "hw": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        },
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        }
+      ],
+      "open": ""
+    },
+    "tx": {
+      "appid": "",
+      "exit": "",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    }
+  },
+  "apck": "com.capp.test.pck",
+  "appid": "386d9db9a9e",
+  "channels": [
+    {
+      "app_name": "出包测试",
+      "cinfo": {
+        "addr": "山东省济南市槐荫区恒大财富中心#1-701",
+        "email": "zy.link@foxmail.com",
+        "name": "济南云创软件科技有限公司",
+        "phone": "13854107777",
+        "v": 0
+      },
+      "cname": "harmony",
+      "name": "鸿蒙",
+      "personal": 1,
+      "shows": [
+        4,
+        1
+      ],
+      "timeShows": []
+    },
+    {
+      "app_name": "出包测试",
+      "cinfo": {
+        "addr": "济南市槐荫区恒大财富中心1号楼1-701",
+        "email": "zy.link@qq.com",
+        "name": "济南掌赢软件科技有限公司",
+        "phone": "13585658566",
+        "v": 0
+      },
+      "cname": "other",
+      "name": "其他",
+      "personal": 1,
+      "shows": [
+        2,
+        1
+      ],
+      "timeShows": []
+    }
+  ],
+  "env": "prodtest",
+  "exts": {
+    "pers": [
+      {
+        "rname": "ZYPER3",
+        "name": "三、您的权利保障与响应",
+        "index": "三",
+        "info": "1、账户注销渠道和时效\n我们设置了账户登录和注册功能，如果您需要注销账户，我们将为您提供注销功能，注销即时生效，我们将删除您的一切注册填写信息和Cookie。\n本软件无账号注册登录功能，无需注销。\n2、账号注销指引\n若您不再使用已注册账号，需要注销，请您在APP内选择“我的”分类—设置—注销账号—勾选注销协议—确认注销。即可完成账号注销功能。\n本软件无账号注册登录功能，无需注销。\n3、用户信息修改\n若您需要更正和删除已注册个人信息，请在APP内选择“我的”分类——编辑资料中进行修改，修改内容即时生效。\n本软件无登录和注册功能，不会获取您的注册个人信息。所以您无需修改个人用户信息。\n4、用户投诉与举报\n在APP内部设置了反馈功能，您可以在设置/我的界面中，选择建议与反馈，提交给相关客服人员，我们会在15个工作日内积极处理。"
+      },
+      {
+        "rname": "ZYPER7",
+        "name": "七、为实现APP功能我们需要获取的权限",
+        "index": "七",
+        "info": "1、未经您的允许，我们不会获取您的任何权限信息，若您允许，我们可能会获取以下权限：\n（1）我们需要获取您的位置权限，用于提供广告和产品功能服务；\n（2）我们需要获取您的设备信息：包括硬件序列号、设备MAC地址、软件安装列表、唯一设备识别码[如IMEI/AndroidID/SIM卡IMSI/OAID信息等]，用于APP运营统计与分析；\n2、您所同意授权的相关权限，皆可在本款APP中—设置/我的界面—点击隐私权限管理—点击相关权限，即可根据操作提示进行撤回授权，关闭各类权限。"
+      }
+    ],
+    "chpers": {
+      "harmony": [
+        {
+          "rname": "ZYPER3",
+          "name": "三、您的权利保障与响应",
+          "index": "三",
+          "info": "1、账号注销指引\n通过我的/设置，点击登录后的>图标，进行注销。\n2、用户信息修改\n登录信息使用华为账号系统，不提供信息修改服务，所以您无需修改个人用户信息。\n3、用户投诉与举报\n您可以在隐私协议中，查看联系方式，提交给相关客服人员，我们会在15个工作日内积极处理。"
+        },
+        {
+          "rname": "ZYPER7",
+          "name": "七、为实现APP功能我们需要获取的权限",
+          "index": "七",
+          "info": "1、未经您的允许，我们不会获取您的任何权限信息，若您允许，我们可能会获取以下权限：\n（1）我们需要获取您的网络权限，用于请求网络权限；\n（2）我们需要获取您的设备信息：包括硬件序列号、设备MAC地址、软件安装列表、唯一设备识别码[如IMEI/SIM卡IMSI/OAID信息等]，用于运营统计与分析；"
+        }
+      ]
+    }
+  },
+  "ggads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "111111111",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "111111111",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "111111111",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "111111111",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "111111111",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "111111111",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "112222222",
+      "exit": "112222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "112222222",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "112222222",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "112222222",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "112222222",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "112222222",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "112222222",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "112222222"
+    }
+  },
+  "hapck": "com.capp.test.pck.hm",
+  "hmads": {
+    "csj": {
+      "appid": "",
+      "exit": "",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    },
+    "hw": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "",
+      "exit": "",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    }
+  },
+  "hnads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "222222222",
+      "exit": "222222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "222222222"
+    }
+  },
+  "humid": "690dcb5b9a7f376488cec121",
+  "hwads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "222222222",
+      "exit": "222222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "222222222"
+    }
+  },
+  "icp": "鲁ICP备12111111号",
+  "id": "386d9db9a9e_1",
+  "jiagu": true,
+  "login": false,
+  "opads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "222222222",
+      "exit": "222222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "222222222"
+    }
+  },
+  "push": false,
+  "push_channel": {
+    "honor": {
+      "id": "",
+      "key": ""
+    },
+    "huawei": {
+      "id": "",
+      "key": ""
+    },
+    "meizu": {
+      "id": "",
+      "key": ""
+    },
+    "oppo": {
+      "id": "",
+      "key": ""
+    },
+    "vivo": {
+      "id": "",
+      "key": ""
+    },
+    "xiaomi": {
+      "id": "",
+      "key": ""
+    }
+  },
+  "qtads": {
+    "csj": {
+      "appid": "",
+      "exit": "",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    },
+    "hw": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "",
+      "exit": "",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": ""
+    }
+  },
+  "rid": "",
+  "sdk": {
+    "csj": "7.2.0.9",
+    "hw": "13.4.77.300",
+    "ks": "3.3.66",
+    "tx": "4.660.1530",
+    "um": "9.8.8",
+    "zy": "1.6.25"
+  },
+  "share": true,
+  "sid": "0830d6eab9-100",
+  "sign": {
+    "dp7b": "profile/debug.p7b",
+    "hmAlias": "Zfihdqai",
+    "hmAliasPwd": "9efe8b2869",
+    "hmPwd": "9efe8b2869",
+    "keyAlias": "dhaZuwed",
+    "keyPassword": "39f043c4",
+    "md5": "88:B1:DB:FF:E1:32:ED:4A:DB:CF:2B:BA:29:E5:88:2F",
+    "rp7b": "profile/release.p7b",
+    "sha1": "C3:86:1C:98:AC:0A:25:EE:2C:E7:63:B8:B1:E7:DC:9D:48:A9:98:E2",
+    "sha256": "0D:51:D7:D4:01:A5:DB:80:4C:66:09:A6:B8:8F:41:98:A2:4C:B2:D1:DB:A4:0B:0D:DE:95:72:F8:A3:8C:71:CC",
+    "storeFile": "channel/release.keystore",
+    "storePassword": "39f043c4"
+  },
+  "sxads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "222222222",
+      "exit": "222222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "222222222"
+    }
+  },
+  "umauth": "",
+  "umid": "690dcb549a7f376488cec11d",
+  "ummaster": "",
+  "umpush": "",
+  "username": "zylyt777",
+  "versionCode": 1,
+  "versionName": "1.0.0",
+  "vvads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "222222222",
+      "exit": "222222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "222222222"
+    }
+  },
+  "xmads": {
+    "csj": {
+      "appid": "111111111",
+      "exit": "111111111",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "111111111"
+    },
+    "hw": {
+      "appid": "11333333",
+      "exit": "11333333",
+      "exts": {},
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "11333333",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "11333333",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "11333333",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "11333333",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "11333333",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "11333333",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "11333333"
+    },
+    "ks": {
+      "appid": "",
+      "exit": "",
+      "exts": {},
+      "modules": [],
+      "open": ""
+    },
+    "tx": {
+      "appid": "222222222",
+      "exit": "222222222",
+      "modules": [
+        {
+          "ban": [],
+          "info": [],
+          "info_left": [],
+          "itemSize": 1,
+          "lscr": [
+            {
+              "adId": "public_main_lscr",
+              "id": "",
+              "name": "首页插屏"
+            }
+          ],
+          "moduleId": "public",
+          "name": "公共模块",
+          "video": []
+        },
+        {
+          "ban": [],
+          "info": [
+            {
+              "adId": "remote_room_detail",
+              "id": "",
+              "name": "房间详情页面"
+            }
+          ],
+          "info_left": [
+            {
+              "adId": "remote_room_manager",
+              "id": "",
+              "name": "房间管理页面"
+            },
+            {
+              "adId": "remote_remote_match",
+              "id": "",
+              "name": "型号匹配页面"
+            },
+            {
+              "adId": "remote_brand_list",
+              "id": "",
+              "name": "空调/电视/IPTV/投影仪品牌选择页面"
+            }
+          ],
+          "itemSize": 5,
+          "lscr": [],
+          "moduleId": "remote",
+          "name": "遥控器",
+          "video": [
+            {
+              "adId": "remote_remote_match_ok",
+              "id": "",
+              "name": "型号匹配解锁"
+            }
+          ]
+        }
+      ],
+      "open": "222222222"
+    }
+  },
+  "ycid": "7493945"
+}

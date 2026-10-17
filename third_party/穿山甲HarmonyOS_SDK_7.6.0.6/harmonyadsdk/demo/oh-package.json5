@@ -1,0 +1,18 @@
+{
+  "license": "",
+  "devDependencies": {},
+  "author": "",
+  "name": "entry",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dynamicDependencies": {},
+  "dependencies": {
+    "@csj/openadsdk": "7.6.6",
+    "@csj/adapter_ks": "file:libs/adapter_ks.har",
+    "ksadsdk": "file:libs/KSAdSDK.har",
+    "@csj/adapter_gdt": "file:libs/adapter_gdt.har",
+    "@gdt/gdt-union-sdk": "file:libs/GDTUnionSDK-default-release.har",
+    "@csj/testtool": "file:libs/testtool.har"
+  }
+}

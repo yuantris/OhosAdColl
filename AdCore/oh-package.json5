@@ -1,0 +1,17 @@
+{
+  "name": "@zysdk/ad-core-hm",
+  "version": "1.1.46-fix",
+  "description": "核心广告SDK",
+  "main": "Index.ets",
+  "author": "zy_xfy",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@zycore/common": "latest",
+    "@zycore/network": "latest",
+    "@csj/openadsdk": "7.3.0",
+    "@gdt/gdt-union-sdk": "file:libs/GDTUnionSDK-1.5.0.har",
+    "@umeng/common": "latest",
+    "@umeng/analytics": "latest",
+    "class-transformer": "^0.5.1",
+  }
+}
