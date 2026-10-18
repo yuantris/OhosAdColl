@@ -2,7 +2,7 @@ import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import { advertising } from '@kit.AdsKit';
 import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
-import { AdProviderRuntime } from './AdProviderRuntime';
+import { AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
 
 const REWARD_EVENT = 'com.huawei.hms.pps.action.PPS_REWARD_STATUS_CHANGED';

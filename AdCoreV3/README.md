@@ -16,7 +16,11 @@ Implemented:
 - Explicit runtime injection for UIAbility context, UIContext, and WindowStage.
 - Vendor SDK dependencies declared in this HAR module.
 
+Added in this step:
+- A separate `AdViewAdapter` / `AdViewHandle` contract for Banner and Native/Feed rendering. It is intentionally distinct from full-screen `AdHandle` because these ads live inside the host ArkUI tree.
+
 Not yet implemented:
+- Concrete provider-view adapters and ArkUI components for Banner/native/feed. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; those need different mount paths behind this contract.
 - Huawei splash and UI-rendered banner/native/feed formats. Huawei splash and feed in V2 depend on host-rendered ArkUI components; V3 needs a separate render-host contract rather than pretending they are ordinary full-screen handles.
 - Automatic OAID/privacy-consent integration; the host must gate initialization/load on its consent flow.
 - Local HarmonyOS compilation and device validation.

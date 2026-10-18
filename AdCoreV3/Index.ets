@@ -14,3 +14,4 @@ export { AdVendorHandle } from './src/main/ets/adapters/AdVendorHandle';
 export { CsjAdAdapter } from './src/main/ets/adapters/CsjAdAdapter';
 export { TencentAdAdapter } from './src/main/ets/adapters/TencentAdAdapter';
 export { HuaweiAdAdapter } from './src/main/ets/adapters/HuaweiAdAdapter';
+export { AdNativeMaterial, AdRenderMode, AdViewAdapter, AdViewHandle, AdViewLifecycleListener, AdViewLoadRequest, AdViewSize } from './src/main/ets/core/AdViewTypes';
