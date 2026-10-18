@@ -39,17 +39,20 @@ core.registerAdapter(new TencentAdAdapter(runtime, new AdProviderConfig(tencentA
 core.registerAdapter(new HuaweiAdAdapter(runtime));
 core.initialize(new AdCoreConfig(10000, debug));
 
+const providerSlots = new Map<string, string>([
+  ['placement.csj', csjSlotId],
+  ['placement.tencent', tencentPosId],
+  ['placement.huawei', huaweiAdId]
+]);
 const result = await core.load(new AdRequest(
-  'home-interstitial-' + Date.now(),
-  AdFormat.Interstitial,
-  configuredPlacementId
+  'home-interstitial-' + Date.now(), AdFormat.Interstitial, 'home-interstitial', 0, providerSlots
 ));
 if (result.success && result.handle !== null) {
   await result.handle.show();
 }
 ```
 
-Register adapters before initialize(). The placementId passed to AdRequest is the real placement ID for each provider, so do not put multiple providers with different placement IDs in the same waterfall until a placement mapping strategy is configured. The current serial waterfall passes the same request placement ID to each adapter.
+Register adapters before initialize(). For a multi-provider waterfall, use the logical placementId plus provider-specific IDs in extras. The adapters resolve `placement.csj`, `placement.tencent`, and `placement.huawei` independently; when a key is absent, they fall back to placementId. Example: `new Map<string, string>([['placement.csj', csjSlotId], ['placement.tencent', tencentPosId], ['placement.huawei', huaweiAdId]])`.
 
 ## Format coverage
 

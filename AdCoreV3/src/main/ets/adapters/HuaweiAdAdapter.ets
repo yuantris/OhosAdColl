@@ -57,10 +57,14 @@ export class HuaweiAdAdapter implements AdAdapter {
               }
             });
             await watcher.start();
-            advertising.showAd(ad, {
-              nonPersonalizedAd: 0, allowMobileTraffic: 0, tagForChildProtection: -1,
-              tagForUnderAgeOfPromise: -1, adContentClassification: 'A', mute: true, colorMode: 1
-            }, this.runtime.context);
+            if (request.format === AdFormat.Interstitial) {
+              advertising.showAd(ad, { mute: true, colorMode: 1 }, this.runtime.context);
+            } else {
+              advertising.showAd(ad, {
+                nonPersonalizedAd: 0, allowMobileTraffic: 0, tagForChildProtection: -1,
+                tagForUnderAgeOfPromise: -1, adContentClassification: 'A'
+              }, this.runtime.context);
+            }
           }, (): void => { watcher?.stop(); });
           resolve(handle);
         }

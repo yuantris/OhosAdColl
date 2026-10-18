@@ -31,6 +31,9 @@ export class CsjAdAdapter implements AdAdapter {
 
   private ensureInitialized(): Promise<void> {
     if (this.initPromise !== null) { return this.initPromise; }
+    if (this.config.appId.length === 0) {
+      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'CSJ appId must be configured.', this.id));
+    }
     const sdkConfig: SDKConfig = new SDKConfigBuilder()
       .appId(this.config.appId).allowShowNotify(true)
       .customController(new CsjPrivacyController()).debug(this.config.debug).build();

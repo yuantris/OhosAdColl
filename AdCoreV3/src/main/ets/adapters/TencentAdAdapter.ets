@@ -37,6 +37,9 @@ export class TencentAdAdapter implements AdAdapter {
 
   private ensureInitialized(): Promise<void> {
     if (this.initPromise !== null) { return this.initPromise; }
+    if (this.config.appId.length === 0) {
+      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Tencent appId must be configured.', this.id));
+    }
     GDTAdSDK.init(this.runtime.context, { appId: this.config.appId });
     this.initPromise = GDTAdSDK.start().then((): void => {}).catch((error: BusinessError) => {
       this.initPromise = null;
