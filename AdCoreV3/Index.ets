@@ -9,3 +9,8 @@ export { AdOrchestrator } from './src/main/ets/orchestration/AdOrchestrator';
 export { FakeAdAdapter, FakeAdHandle } from './src/main/ets/testing/FakeAdAdapter';
 export { runAdCoreSelfTests } from './src/main/ets/testing/AdCoreSelfTest';
 export { runAdCoreFacadeSelfTests } from './src/main/ets/testing/AdCoreFacadeSelfTest';
+export { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './src/main/ets/adapters/AdProviderRuntime';
+export { AdVendorHandle } from './src/main/ets/adapters/AdVendorHandle';
+export { CsjAdAdapter } from './src/main/ets/adapters/CsjAdAdapter';
+export { TencentAdAdapter } from './src/main/ets/adapters/TencentAdAdapter';
+export { HuaweiAdAdapter } from './src/main/ets/adapters/HuaweiAdAdapter';

@@ -5,7 +5,7 @@ import {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
-import { AdProviderConfig, AdProviderRuntime } from './AdProviderRuntime';
+import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
 import { CsjPrivacyController } from './CsjPrivacyController';
 
@@ -48,7 +48,7 @@ export class CsjAdAdapter implements AdAdapter {
   private loadSplash(request: AdRequest): Promise<AdHandle> {
     return new Promise((resolve, reject) => {
       let settled = false;
-      const slot = new AdSlotBuilder().setCodeId(request.placementId).build();
+      const slot = new AdSlotBuilder().setCodeId(resolvePlacementId(request, this.id)).build();
       const listener: CSJSplashAdLoadListener = {
         onAdLoaded: (ad: CSJSplashAd): void => {
           if (settled) { return; }
@@ -107,7 +107,7 @@ export class CsjAdAdapter implements AdAdapter {
           reject(new AdError(AdErrorCode.LoadFailed, '[' + code + '] ' + message, this.id));
         }
       };
-      CSJAdSdk.getAdCreator().loadFullAd(new AdSlotBuilder().setCodeId(request.placementId).build(), listener);
+      CSJAdSdk.getAdCreator().loadFullAd(new AdSlotBuilder().setCodeId(resolvePlacementId(request, this.id)).build(), listener);
     });
   }
 
@@ -143,7 +143,7 @@ export class CsjAdAdapter implements AdAdapter {
         }
       };
       CSJAdSdk.getAdCreator().loadRewardAd(
-        new AdSlotBuilder().setCodeId(request.placementId).setRewardAmount(1).build(), listener);
+        new AdSlotBuilder().setCodeId(resolvePlacementId(request, this.id)).setRewardAmount(1).build(), listener);
     });
   }
 }

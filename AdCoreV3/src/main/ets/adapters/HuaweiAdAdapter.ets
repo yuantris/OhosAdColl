@@ -27,7 +27,7 @@ export class HuaweiAdAdapter implements AdAdapter {
         nonPersonalizedAd: 0, allowMobileTraffic: 0, tagForChildProtection: -1,
         tagForUnderAgeOfPromise: -1, adContentClassification: 'A'
       };
-      const params: advertising.AdRequestParams = { adType: adType, adId: request.placementId };
+      const params: advertising.AdRequestParams = { adType: adType, adId: resolvePlacementId(request, this.id), oaid: this.runtime.oaid };
       const listener: advertising.AdLoadListener = {
         onAdLoadFailure: (code: number, message: string): void => {
           if (settled) { return; }

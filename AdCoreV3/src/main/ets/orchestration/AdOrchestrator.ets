@@ -1,6 +1,7 @@
 import { AdAdapter, adapterSupports } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdHandle, AdLoadResult, AdRequest, AdSessionState } from '../core/AdCoreTypes';
 import { AdRequestSession } from '../core/AdRequestSession';
+import { AdManagedHandle } from '../core/AdManagedHandle';
 
 /** Serial waterfall. Every call has an independent session and one shared request deadline. */
 export class AdOrchestrator {
@@ -47,7 +48,7 @@ export class AdOrchestrator {
           continue;
         }
         activeSession.transition(AdSessionState.Ready);
-        return AdLoadResult.loaded(handle);
+        return AdLoadResult.loaded(new AdManagedHandle(handle));
       } catch (error) {
         if (activeSession.isTerminal) {
           return AdLoadResult.failed(activeSession.error === null

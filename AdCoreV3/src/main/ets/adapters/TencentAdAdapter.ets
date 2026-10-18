@@ -11,7 +11,7 @@ import {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
-import { AdProviderConfig, AdProviderRuntime } from './AdProviderRuntime';
+import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
 
 /** Tencent GDT adapter. Vendor callbacks are translated into V3 lifecycle events. */
@@ -70,7 +70,7 @@ export class TencentAdAdapter implements AdAdapter {
           reject(new AdError(AdErrorCode.LoadFailed, '[' + error.code + '] ' + error.message, this.id));
         }
       };
-      const config: GDTAdLoadConfig = { posId: request.placementId };
+      const config: GDTAdLoadConfig = { posId: resolvePlacementId(request, this.id) };
       GDTAdSDK.getAdLoader().loadSplashAd(config, listener);
     });
   }
@@ -99,7 +99,7 @@ export class TencentAdAdapter implements AdAdapter {
           reject(new AdError(AdErrorCode.LoadFailed, '[' + error.code + '] ' + error.message, this.id));
         }
       };
-      GDTAdSDK.getAdLoader().loadInterstitialAd({ posId: request.placementId }, listener);
+      GDTAdSDK.getAdLoader().loadInterstitialAd({ posId: resolvePlacementId(request, this.id) }, listener);
     });
   }
 
@@ -133,7 +133,7 @@ export class TencentAdAdapter implements AdAdapter {
           reject(new AdError(AdErrorCode.LoadFailed, '[' + error.code + '] ' + error.message, this.id));
         }
       };
-      GDTAdSDK.getAdLoader().loadRewardAd({ posId: request.placementId }, listener);
+      GDTAdSDK.getAdLoader().loadRewardAd({ posId: resolvePlacementId(request, this.id) }, listener);
     });
   }
 }
