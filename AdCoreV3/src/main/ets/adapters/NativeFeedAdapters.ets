@@ -189,7 +189,17 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
           resolve(handle);
         }
       };
-      CSJAdSdk.getAdCreator().loadExpressFeedAd(slot, listener);
+      try {
+        CSJAdSdk.getAdCreator().loadExpressFeedAd(slot, listener);
+      } catch (error) {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timeoutId);
+          reject(new AdError(AdErrorCode.Internal,
+            'Pangle feed request could not be started: ' + (error instanceof Error ? error.message : String(error)),
+            this.id));
+        }
+      }
       });
     });
   }
@@ -298,7 +308,17 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
           reject(new AdError(AdErrorCode.LoadFailed, '[' + error.code + '] ' + error.message, this.id));
         }
       };
-      GDTAdSDK.getAdLoader().loadNativeAd(config, listener);
+      try {
+        GDTAdSDK.getAdLoader().loadNativeAd(config, listener);
+      } catch (error) {
+        if (!settled) {
+          settled = true;
+          clearTimeout(timeoutId);
+          reject(new AdError(AdErrorCode.Internal,
+            'GDT feed request could not be started: ' + (error instanceof Error ? error.message : String(error)),
+            this.id));
+        }
+      }
       });
     });
   }
