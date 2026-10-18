@@ -21,6 +21,7 @@ import { AdNativeMaterial, AdRenderMode, AdViewAdapter, AdViewHandle, AdViewLife
 import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdProviderSdkRegistry } from './AdProviderSdkRegistry';
 import { CsjPrivacyController } from './CsjPrivacyController';
+import { AdPrivacyGate } from '../core/AdPrivacyGate';
 
 class NativeFeedViewHandle implements AdViewHandle {
   readonly providerId: string;
@@ -118,6 +119,7 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
   }
 
   loadView(request: AdViewLoadRequest): Promise<AdViewHandle> {
+    try { AdPrivacyGate.requireConsent(this.id); } catch (error) { return Promise.reject(error); }
     if (request.request.format !== AdFormat.Native) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Pangle feed adapter requires AdFormat.Native.', this.id));
     }
@@ -200,6 +202,7 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
   }
 
   loadView(request: AdViewLoadRequest): Promise<AdViewHandle> {
+    try { AdPrivacyGate.requireConsent(this.id); } catch (error) { return Promise.reject(error); }
     if (request.request.format !== AdFormat.Native) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'GDT feed adapter requires AdFormat.Native.', this.id));
     }

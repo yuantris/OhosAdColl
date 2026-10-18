@@ -1,5 +1,6 @@
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
 import { AdViewLifecycleListener } from '../core/AdViewTypes';
+import { AdPrivacyGate } from '../core/AdPrivacyGate';
 
 const HW_BANNER_AD_TYPE = 8;
 const HW_BANNER_WIDTH = 360;
@@ -50,6 +51,11 @@ export struct HuaweiBannerAd {
    * Banner loading is deliberately local to this component, not the waterfall.
    */
   public loadBanner(): void {
+    try { AdPrivacyGate.requireConsent('huawei'); } catch (error) {
+      this.shouldMount = false;
+      this.lifecycleListener?.onFailed('PRIVACY_CONSENT_REQUIRED', 'User consent is required before initializing Huawei AdsKit.');
+      return;
+    }
     if (this.adId.length === 0) {
       this.lifecycleListener?.onFailed('INVALID_PLACEMENT', 'Huawei banner adId is empty.');
       return;

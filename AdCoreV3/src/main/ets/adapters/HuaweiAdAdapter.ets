@@ -4,6 +4,7 @@ import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
 import { AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
+import { AdPrivacyGate } from '../core/AdPrivacyGate';
 
 const REWARD_EVENT = 'com.huawei.hms.pps.action.PPS_REWARD_STATUS_CHANGED';
 const INTERSTITIAL_EVENT = 'com.huawei.hms.pps.action.PPS_INTERSTITIAL_STATUS_CHANGED';
@@ -16,6 +17,7 @@ export class HuaweiAdAdapter implements AdAdapter {
   constructor(runtime: AdProviderRuntime) { this.runtime = runtime; }
 
   async load(request: AdRequest): Promise<AdHandle> {
+    AdPrivacyGate.requireConsent(this.id);
     if (request.format !== AdFormat.Interstitial && request.format !== AdFormat.Rewarded) {
       throw new AdError(AdErrorCode.InvalidRequest,
         'Huawei AdsKit adapter currently supports interstitial and rewarded formats only.', this.id);

@@ -1,3 +1,5 @@
+import { AdPrivacyGate } from '../core/AdPrivacyGate';
+
 /**
  * Coordinates one SDK startup across full-screen and view adapters.
  * A provider may only be initialized once per app/configuration in a process.
@@ -7,6 +9,7 @@ export class AdProviderSdkRegistry {
     new Map<string, { configKey: string; promise: Promise<void> }>();
 
   static ensure(providerId: string, configKey: string, initialize: () => Promise<void>): Promise<void> {
+    try { AdPrivacyGate.requireConsent(providerId); } catch (error) { return Promise.reject(error); }
     const existing = AdProviderSdkRegistry.entries.get(providerId);
     if (existing !== undefined) {
       if (existing.configKey !== configKey) {

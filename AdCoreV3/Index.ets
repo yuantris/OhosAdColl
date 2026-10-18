@@ -23,3 +23,6 @@ export { HuaweiBannerAd } from './src/main/ets/components/HuaweiBannerAd';
 export { PangleFeedViewAdapter, GdtFeedViewAdapter } from './src/main/ets/adapters/NativeFeedAdapters';
 
 export { AdProviderSdkRegistry } from './src/main/ets/adapters/AdProviderSdkRegistry';
+
+export { AdPrivacyGate, AdPrivacyState } from './src/main/ets/core/AdPrivacyGate';
+export { AdCoreFacade } from './src/main/ets/core/AdCoreFacade';

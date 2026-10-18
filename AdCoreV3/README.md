@@ -25,7 +25,7 @@ Added in this step:
 Not yet implemented:
 - Concrete `PangleFeedViewAdapter` and `GdtFeedViewAdapter` load native feed ads and expose their SDK `NodeController` to `AdViewHost`; Huawei banner now has a provider-owned `HuaweiBannerAd` component. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while Pangle and GDT feed ads use native-express/native-ad objects; their SDK-owned render and destruction paths are kept separate.
 - Huawei splash and UI-rendered banner/native/feed formats. Huawei splash and feed in V2 depend on host-rendered ArkUI components; V3 needs a separate render-host contract rather than pretending they are ordinary full-screen handles.
-- Automatic OAID/privacy-consent integration; the host must gate initialization/load on its consent flow.
+- `AdCoreFacade` is the host-facing entry point. SDK initialization and ad requests are blocked by default until the host confirms explicit privacy consent. Pangle/GDT feed and Huawei banner paths are guarded too.
 - Local HarmonyOS compilation and device validation.
 
 ## Unified ArkUI view host
@@ -122,3 +122,25 @@ Rewarded completion is forwarded only when the vendor signals completion/reward.
 ## Validation status
 
 The implementation was authored through GitHub. It has not been compiled in DevEco Studio or verified on a HarmonyOS device yet. API-signature issues, especially SDK-version-specific listener declarations, must be confirmed by the project's HarmonyOS toolchain.
+
+
+## Mandatory privacy consent
+
+Use `AdCoreFacade` as the host-facing entry point. Constructing it only wires adapters; it does not initialize vendor SDKs. After displaying the privacy policy and receiving the user's explicit agreement, call `initialize(true)`. Never pass true before that user action. Declining or withdrawing consent must block ad requests.
+
+```ts
+const facade = new AdCoreFacade(
+  runtime,
+  new AdProviderConfig(pangleAppId, debug),
+  new AdProviderConfig(gdtAppId, debug)
+);
+
+// Only in the affirmative branch of the actual consent UI:
+facade.initialize(true);
+const result = await facade.load(request);
+
+// On decline/withdrawal:
+facade.revokeConsent();
+```
+
+The process-wide gate starts at `Unknown`. The SDK registry rejects initialization unless consent is `Granted`; Huawei full-screen and Banner paths are guarded separately. Revocation blocks future requests, but third-party SDKs already initialized in-process may not be unloadable, so detach active ad views and follow each provider's privacy APIs.
