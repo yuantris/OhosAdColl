@@ -10,8 +10,8 @@ Implemented:
 - Request deadline, cancellation, late-result cleanup, and SDK default timeout.
 - SDK-owned AdManagedHandle lifecycle wrapper.
 - Real full-screen adapters based on V2-verified HarmonyOS SDK calls:
-  - CsjAdAdapter: splash, interstitial, rewarded video.
-  - TencentAdAdapter: splash, interstitial, rewarded video.
+  - `PangleAdAdapter`: splash, interstitial, rewarded video. Pangle (穿山甲) is the product name; `@csj/openadsdk` is the SDK package name.
+  - `GdtAdAdapter`: splash, interstitial, rewarded video. GDT/优量汇 is the ad platform name; Tencent is the parent company.
   - HuaweiAdAdapter: interstitial and rewarded video.
 - Explicit runtime injection for UIAbility context, UIContext, and WindowStage.
 - Vendor SDK dependencies declared in this HAR module.
@@ -23,7 +23,7 @@ Added in this step:
 - Explicit lifecycle split: Banner appearance/disappearance is delegated to the provider component (it owns load/refresh/close); Feed mounts its loaded handle and releases it when the host slot disappears; SelfRender lays out returned material and releases an optional host-owned handle on detach.
 
 Not yet implemented:
-- Concrete provider-view adapters that connect CSJ/Tencent feed objects to `AdViewHost`; Huawei banner now has a provider-owned `HuaweiBannerAd` component. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; those need different mount paths behind this contract.
+- Concrete `PangleFeedViewAdapter` and `GdtFeedViewAdapter` load native feed ads and expose their SDK `NodeController` to `AdViewHost`; Huawei banner now has a provider-owned `HuaweiBannerAd` component. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; their SDK-owned render and destruction paths are kept separate.
 - Huawei splash and UI-rendered banner/native/feed formats. Huawei splash and feed in V2 depend on host-rendered ArkUI components; V3 needs a separate render-host contract rather than pretending they are ordinary full-screen handles.
 - Automatic OAID/privacy-consent integration; the host must gate initialization/load on its consent flow.
 - Local HarmonyOS compilation and device validation.
@@ -63,29 +63,29 @@ AdViewHost({
 })
 ```
 
-The host is a rendering/lifecycle boundary, not yet a concrete vendor bridge. Each provider adapter still needs to provide the correct SDK-specific banner/feed node or material before that format is production-ready.
+The host is a rendering/lifecycle boundary. Pangle/GDT feed adapters now return provider-owned `NodeController` instances, and `AdViewHost` mounts them with `NodeContainer`. Local HarmonyOS compilation and device validation are still required.
 
 ## Provider setup
 
-The host app obtains its UIAbilityContext, UIContext, and window.WindowStage, then injects them into AdProviderRuntime. Supply the app ID for CSJ/Tencent from the host's own configuration; do not rely on V2 sample IDs.
+The host app obtains its UIAbilityContext, UIContext, and window.WindowStage, then injects them into AdProviderRuntime. Supply the app ID for Pangle/GDT from the host's own configuration; do not rely on V2 sample IDs.
 
 ```ts
 import {
   AdCore, AdCoreConfig, AdFormat, AdRequest,
   AdProviderConfig, AdProviderRuntime,
-  CsjAdAdapter, TencentAdAdapter, HuaweiAdAdapter
+  PangleAdAdapter, GdtAdAdapter, HuaweiAdAdapter
 } from '@zysdk/ad-core-v3';
 
 const runtime = new AdProviderRuntime(abilityContext, uiContext, windowStage);
 const core = new AdCore();
-core.registerAdapter(new CsjAdAdapter(runtime, new AdProviderConfig(csjAppId, debug)));
-core.registerAdapter(new TencentAdAdapter(runtime, new AdProviderConfig(tencentAppId, debug)));
+core.registerAdapter(new PangleAdAdapter(runtime, new AdProviderConfig(pangleAppId, debug)));
+core.registerAdapter(new GdtAdAdapter(runtime, new AdProviderConfig(gdtAppId, debug)));
 core.registerAdapter(new HuaweiAdAdapter(runtime));
 core.initialize(new AdCoreConfig(10000, debug));
 
 const providerSlots = new Map<string, string>([
-  ['placement.csj', csjSlotId],
-  ['placement.tencent', tencentPosId],
+  ['placement.pangle', pangleSlotId],
+  ['placement.gdt', gdtPosId],
   ['placement.huawei', huaweiAdId]
 ]);
 const result = await core.load(new AdRequest(

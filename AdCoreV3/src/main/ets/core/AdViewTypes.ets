@@ -1,3 +1,4 @@
+import { NodeController } from '@kit.ArkUI';
 import { AdFormat, AdRequest } from '../core/AdCoreTypes';
 
 /**
@@ -49,6 +50,8 @@ export interface AdViewHandle {
   readonly format: AdFormat;
   readonly mode: AdRenderMode;
   readonly material: AdNativeMaterial | null;
+  /** SDK-owned ArkUI node used by NodeContainer for provider-rendered feed ads. */
+  readonly nodeController: NodeController | null;
   setLifecycleListener(listener: AdViewLifecycleListener): void;
   /** Called by the host when its UI node is mounted and ready to display the ad. */
   mount(): Promise<void>;

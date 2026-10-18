@@ -10,8 +10,8 @@ import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdPro
 import { AdVendorHandle } from './AdVendorHandle';
 import { CsjPrivacyController } from './CsjPrivacyController';
 
-export class CsjAdAdapter implements AdAdapter {
-  readonly id: string = 'csj';
+export class PangleAdAdapter implements AdAdapter {
+  readonly id: string = 'pangle';
   readonly supportedFormats: AdFormat[] = [AdFormat.Splash, AdFormat.Interstitial, AdFormat.Rewarded];
   private readonly runtime: AdProviderRuntime;
   private readonly config: AdProviderConfig;
@@ -27,23 +27,23 @@ export class CsjAdAdapter implements AdAdapter {
     if (request.format === AdFormat.Splash) { return this.loadSplash(request); }
     if (request.format === AdFormat.Interstitial) { return this.loadInterstitial(request); }
     if (request.format === AdFormat.Rewarded) { return this.loadRewarded(request); }
-    throw new AdError(AdErrorCode.InvalidRequest, 'CSJ does not support format: ' + request.format, this.id);
+    throw new AdError(AdErrorCode.InvalidRequest, 'Pangle does not support format: ' + request.format, this.id);
   }
 
   private ensureInitialized(): Promise<void> {
     if (this.initPromise !== null) { return this.initPromise; }
     if (this.config.appId.length === 0) {
-      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'CSJ appId must be configured.', this.id));
+      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Pangle appId must be configured.', this.id));
     }
     const sdkConfig: SDKConfig = new SDKConfigBuilder()
       .appId(this.config.appId).allowShowNotify(true)
       .customController(new CsjPrivacyController()).debug(this.config.debug).build();
     CSJAdSdk.init(this.runtime.context, sdkConfig);
     this.initPromise = CSJAdSdk.start().then((): void => {
-      if (!CSJAdSdk.isSdkReady()) { throw new AdError(AdErrorCode.LoadFailed, 'CSJ SDK did not become ready.', this.id); }
+      if (!CSJAdSdk.isSdkReady()) { throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK did not become ready.', this.id); }
     }).catch((error: BusinessError) => {
       this.initPromise = null;
-      throw new AdError(AdErrorCode.LoadFailed, 'CSJ SDK initialization failed: ' +
+      throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK initialization failed: ' +
         (error instanceof Error ? error.message : String(error)), this.id);
     });
     return this.initPromise;

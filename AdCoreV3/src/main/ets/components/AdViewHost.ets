@@ -73,6 +73,11 @@ export struct AdViewHost {
     Column() {
       if (this.kind === AdViewKind.SelfRender) {
         this.buildSelfRenderedMaterial();
+      } else if (this.kind === AdViewKind.Feed && this.handle?.nodeController !== null && this.handle?.nodeController !== undefined) {
+        NodeContainer(this.handle.nodeController)
+          .width('100%')
+          .borderRadius(this.radius)
+          .backgroundColor(this.backgroundColor);
       } else {
         this.providerContent();
       }

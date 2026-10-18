@@ -15,8 +15,8 @@ import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdPro
 import { AdVendorHandle } from './AdVendorHandle';
 
 /** Tencent GDT adapter. Vendor callbacks are translated into V3 lifecycle events. */
-export class TencentAdAdapter implements AdAdapter {
-  readonly id: string = 'tencent';
+export class GdtAdAdapter implements AdAdapter {
+  readonly id: string = 'gdt';
   readonly supportedFormats: AdFormat[] = [AdFormat.Splash, AdFormat.Interstitial, AdFormat.Rewarded];
   private readonly runtime: AdProviderRuntime;
   private readonly config: AdProviderConfig;
@@ -32,18 +32,18 @@ export class TencentAdAdapter implements AdAdapter {
     if (request.format === AdFormat.Splash) { return this.loadSplash(request); }
     if (request.format === AdFormat.Interstitial) { return this.loadInterstitial(request); }
     if (request.format === AdFormat.Rewarded) { return this.loadRewarded(request); }
-    throw new AdError(AdErrorCode.InvalidRequest, 'Tencent does not support format: ' + request.format, this.id);
+    throw new AdError(AdErrorCode.InvalidRequest, 'GDT does not support format: ' + request.format, this.id);
   }
 
   private ensureInitialized(): Promise<void> {
     if (this.initPromise !== null) { return this.initPromise; }
     if (this.config.appId.length === 0) {
-      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Tencent appId must be configured.', this.id));
+      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'GDT appId must be configured.', this.id));
     }
     GDTAdSDK.init(this.runtime.context, { appId: this.config.appId });
     this.initPromise = GDTAdSDK.start().then((): void => {}).catch((error: BusinessError) => {
       this.initPromise = null;
-      throw new AdError(AdErrorCode.LoadFailed, 'Tencent SDK initialization failed: ' +
+      throw new AdError(AdErrorCode.LoadFailed, 'GDT SDK initialization failed: ' +
         (error instanceof Error ? error.message : String(error)), this.id);
     });
     return this.initPromise;
