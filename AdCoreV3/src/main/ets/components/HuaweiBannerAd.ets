@@ -1,6 +1,6 @@
 import { advertising, AutoAdComponent } from '@kit.AdsKit';
 import { AdViewLifecycleListener } from '../core/AdViewTypes';
-import { AdPrivacyGate } from '../core/AdPrivacyGate';
+import { AdPrivacyGate, AdPrivacyState } from '../core/AdPrivacyGate';
 
 const HW_BANNER_AD_TYPE = 8;
 const HW_BANNER_WIDTH = 360;
@@ -36,12 +36,24 @@ export struct HuaweiBannerAd {
   };
   @Local private displayOptions: advertising.AdDisplayOptions = {};
   private readonly adOptions: advertising.AdOptions = {};
+  private unsubscribePrivacy: (() => void) | null = null;
 
   aboutToAppear(): void {
+    this.unsubscribePrivacy = AdPrivacyGate.subscribe((state: AdPrivacyState): void => {
+      if (state !== AdPrivacyState.Granted) {
+        // Removing AutoAdComponent detaches the SDK-owned banner after consent withdrawal.
+        this.shouldMount = false;
+        this.closed = true;
+        this.lifecycleListener?.onFailed('PRIVACY_CONSENT_REVOKED',
+          'Privacy consent was withdrawn; the Huawei banner has been detached.');
+      }
+    });
     this.loadBanner();
   }
 
   aboutToDisappear(): void {
+    this.unsubscribePrivacy?.();
+    this.unsubscribePrivacy = null;
     // Unmounting AutoAdComponent releases the SDK-owned view/listeners.
     this.shouldMount = false;
   }
