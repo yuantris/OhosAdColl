@@ -13,6 +13,7 @@ import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdC
 import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
 import { AdProviderSdkRegistry } from './AdProviderSdkRegistry';
+import { AdPrivacyGate } from '../core/AdPrivacyGate';
 
 /** Tencent GDT adapter. Vendor callbacks are translated into V3 lifecycle events. */
 export class GdtAdAdapter implements AdAdapter {
@@ -29,6 +30,7 @@ export class GdtAdAdapter implements AdAdapter {
 
   async load(request: AdRequest): Promise<AdHandle> {
     await this.ensureInitialized();
+    AdPrivacyGate.requireConsent(this.id);
     if (request.format === AdFormat.Splash) { return this.loadSplash(request); }
     if (request.format === AdFormat.Interstitial) { return this.loadInterstitial(request); }
     if (request.format === AdFormat.Rewarded) { return this.loadRewarded(request); }

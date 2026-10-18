@@ -38,6 +38,12 @@ export class HuaweiAdAdapter implements AdAdapter {
         },
         onAdLoadSuccess: (ads: Array<advertising.Advertisement>): void => {
           if (settled) { return; }
+          if (AdPrivacyGate.state !== 'granted') {
+            settled = true;
+            reject(new AdError(AdErrorCode.InvalidState,
+              'Privacy consent was withdrawn while loading Huawei ad.', this.id));
+            return;
+          }
           if (ads.length === 0) {
             settled = true;
             reject(new AdError(AdErrorCode.LoadFailed, 'Huawei AdsKit returned an empty ad list.', this.id));

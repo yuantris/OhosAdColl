@@ -9,6 +9,7 @@ import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdPro
 import { AdVendorHandle } from './AdVendorHandle';
 import { CsjPrivacyController } from './CsjPrivacyController';
 import { AdProviderSdkRegistry } from './AdProviderSdkRegistry';
+import { AdPrivacyGate } from '../core/AdPrivacyGate';
 
 export class PangleAdAdapter implements AdAdapter {
   readonly id: string = 'pangle';
@@ -24,6 +25,7 @@ export class PangleAdAdapter implements AdAdapter {
 
   async load(request: AdRequest): Promise<AdHandle> {
     await this.ensureInitialized();
+    AdPrivacyGate.requireConsent(this.id);
     if (request.format === AdFormat.Splash) { return this.loadSplash(request); }
     if (request.format === AdFormat.Interstitial) { return this.loadInterstitial(request); }
     if (request.format === AdFormat.Rewarded) { return this.loadRewarded(request); }
