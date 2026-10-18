@@ -17,3 +17,5 @@ export { HuaweiAdAdapter } from './src/main/ets/adapters/HuaweiAdAdapter';
 export { AdNativeMaterial, AdRenderMode, AdViewAdapter, AdViewHandle, AdViewLifecycleListener, AdViewLoadRequest, AdViewSize } from './src/main/ets/core/AdViewTypes';
 
 export { AdViewHost, AdViewKind } from './src/main/ets/components/AdViewHost';
+
+export { HuaweiBannerAd } from './src/main/ets/components/HuaweiBannerAd';

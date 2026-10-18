@@ -19,10 +19,11 @@ Implemented:
 Added in this step:
 - A separate `AdViewAdapter` / `AdViewHandle` contract for Banner and Native/Feed rendering. It is intentionally distinct from full-screen `AdHandle` because these ads live inside the host ArkUI tree.
 - `AdViewHost`, a single ArkUI component for provider-rendered Banner, provider-rendered Feed, and host self-rendered native material.
+- `HuaweiBannerAd`, a concrete AdsKit banner component using ad type 8, supported 360×57 / 360×144 sizes, optional 30–120 second refresh, OAID injection, and normalized lifecycle callbacks.
 - Explicit lifecycle split: Banner appearance/disappearance is delegated to the provider component (it owns load/refresh/close); Feed mounts its loaded handle and releases it when the host slot disappears; SelfRender lays out returned material and releases an optional host-owned handle on detach.
 
 Not yet implemented:
-- Concrete provider-view adapters that connect each vendor SDK's actual banner/feed objects to `AdViewHost`. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; those need different mount paths behind this contract.
+- Concrete provider-view adapters that connect CSJ/Tencent feed objects to `AdViewHost`; Huawei banner now has a provider-owned `HuaweiBannerAd` component. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; those need different mount paths behind this contract.
 - Huawei splash and UI-rendered banner/native/feed formats. Huawei splash and feed in V2 depend on host-rendered ArkUI components; V3 needs a separate render-host contract rather than pretending they are ordinary full-screen handles.
 - Automatic OAID/privacy-consent integration; the host must gate initialization/load on its consent flow.
 - Local HarmonyOS compilation and device validation.
@@ -47,6 +48,7 @@ AdViewHost({
   onBannerDisappear: () => bannerController.dispose(),
   providerContent: (): void => {
     // Place the provider's ArkUI banner component here.
+    // Example: HuaweiBannerAd({ adId: huaweiBannerId, oaid })
     // The provider component manages its own ad lifecycle.
   }
 })
