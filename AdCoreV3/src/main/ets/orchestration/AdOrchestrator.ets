@@ -103,9 +103,14 @@ export class AdOrchestrator {
       session.onCancel(() => {
         finishReject(new AdError(AdErrorCode.Cancelled, 'The request was cancelled.', adapter.id));
       });
-      adapter.load(request).then(finishResolve).catch((error: Error) => {
-        finishReject(error);
-      });
+      try {
+        adapter.load(request).then(finishResolve).catch((error: Error) => {
+          finishReject(error);
+        });
+      } catch (error) {
+        const loadError = error instanceof Error ? error : new Error('Adapter threw while starting load.');
+        finishReject(loadError);
+      }
     });
   }
 
