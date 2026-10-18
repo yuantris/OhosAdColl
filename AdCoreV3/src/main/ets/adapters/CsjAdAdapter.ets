@@ -3,6 +3,7 @@ import {
   CSJSplashAdLoadParam, FullAdLoadListener, RewardAdLoadListener, SDKConfig, SDKConfigBuilder
 } from '@csj/openadsdk';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { display } from '@kit.ArkUI';
 import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
 import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
@@ -51,7 +52,13 @@ export class CsjAdAdapter implements AdAdapter {
   private loadSplash(request: AdRequest): Promise<AdHandle> {
     return new Promise((resolve, reject) => {
       let settled = false;
-      const slot = new AdSlotBuilder().setCodeId(resolvePlacementId(request, this.id)).build();
+      const screen = display.getDefaultDisplaySync();
+      const screenWidth = screen.width / screen.densityPixels;
+      const screenHeight = screen.height / screen.densityPixels;
+      const slot = new AdSlotBuilder()
+        .setCodeId(resolvePlacementId(request, this.id))
+        .setAcceptSize(screenWidth, screenHeight)
+        .build();
       const listener: CSJSplashAdLoadListener = {
         onAdLoaded: (ad: CSJSplashAd): void => {
           if (settled) { return; }
