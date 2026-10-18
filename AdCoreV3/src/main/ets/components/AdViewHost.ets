@@ -1,4 +1,4 @@
-import { AdNativeMaterial, AdViewHandle } from '../core/AdViewTypes';
+import { AdNativeMaterial, AdViewHandle, AdViewLifecycleListener } from '../core/AdViewTypes';
 
 /**
  * Public rendering modes for the unified ArkUI ad host.
@@ -29,6 +29,7 @@ export struct AdViewHost {
   @Require @Param kind: AdViewKind;
   @Param material: AdNativeMaterial | null = null;
   @Param handle: AdViewHandle | null = null;
+  @Param lifecycleListener: AdViewLifecycleListener | undefined = undefined;
   @Param width: Length = '100%';
   @Param height: Length = 'auto';
   @Param radius: Length = 0;
@@ -54,6 +55,9 @@ export struct AdViewHost {
       return;
     }
     if (this.kind === AdViewKind.Feed && this.handle !== null) {
+      if (this.lifecycleListener !== undefined) {
+        this.handle.setLifecycleListener(this.lifecycleListener);
+      }
       this.handle.mount().catch((error: Error) => {
         this.onHostError?.(error.message);
       });
