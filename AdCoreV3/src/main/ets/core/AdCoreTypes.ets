@@ -29,14 +29,14 @@ export enum AdErrorCode {
   Internal = 'internal'
 }
 
-export class AdError {
+export class AdError extends Error {
   readonly code: AdErrorCode;
-  readonly message: string;
   readonly adapterId: string;
 
   constructor(code: AdErrorCode, message: string, adapterId: string = '') {
+    super(message);
+    this.name = 'AdError';
     this.code = code;
-    this.message = message;
     this.adapterId = adapterId;
   }
 }
