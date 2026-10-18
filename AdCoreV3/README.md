@@ -23,7 +23,7 @@ Added in this step:
 - Explicit lifecycle split: Banner appearance/disappearance is delegated to the provider component (it owns load/refresh/close); Feed mounts its loaded handle and releases it when the host slot disappears; SelfRender lays out returned material and releases an optional host-owned handle on detach.
 
 Not yet implemented:
-- Concrete `PangleFeedViewAdapter` and `GdtFeedViewAdapter` load native feed ads and expose their SDK `NodeController` to `AdViewHost`; Huawei banner now has a provider-owned `HuaweiBannerAd` component. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; their SDK-owned render and destruction paths are kept separate.
+- Concrete `PangleFeedViewAdapter` and `GdtFeedViewAdapter` load native feed ads and expose their SDK `NodeController` to `AdViewHost`; Huawei banner now has a provider-owned `HuaweiBannerAd` component. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while Pangle and GDT feed ads use native-express/native-ad objects; their SDK-owned render and destruction paths are kept separate.
 - Huawei splash and UI-rendered banner/native/feed formats. Huawei splash and feed in V2 depend on host-rendered ArkUI components; V3 needs a separate render-host contract rather than pretending they are ordinary full-screen handles.
 - Automatic OAID/privacy-consent integration; the host must gate initialization/load on its consent flow.
 - Local HarmonyOS compilation and device validation.
@@ -96,7 +96,7 @@ if (result.success && result.handle !== null) {
 }
 ```
 
-Register adapters before initialize(). For a multi-provider waterfall, use the logical placementId plus provider-specific IDs in extras. The adapters resolve `placement.csj`, `placement.tencent`, and `placement.huawei` independently; when a key is absent, they fall back to placementId. Example: `new Map<string, string>([['placement.csj', csjSlotId], ['placement.tencent', tencentPosId], ['placement.huawei', huaweiAdId]])`.
+Register adapters before initialize(). For a multi-provider waterfall, use the logical placementId plus provider-specific IDs in extras. The adapters resolve `placement.pangle`, `placement.gdt`, and `placement.huawei` independently; when a key is absent, they fall back to placementId. Example: `new Map<string, string>([['placement.pangle', pangleSlotId], ['placement.gdt', gdtPosId], ['placement.huawei', huaweiAdId]])`.
 
 ## Format coverage
 
