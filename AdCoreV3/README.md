@@ -18,12 +18,50 @@ Implemented:
 
 Added in this step:
 - A separate `AdViewAdapter` / `AdViewHandle` contract for Banner and Native/Feed rendering. It is intentionally distinct from full-screen `AdHandle` because these ads live inside the host ArkUI tree.
+- `AdViewHost`, a single ArkUI component for provider-rendered Banner, provider-rendered Feed, and host self-rendered native material.
+- Explicit lifecycle split: Banner appearance/disappearance is delegated to the provider component (it owns load/refresh/close); Feed mounts its loaded handle and releases it when the host slot disappears; SelfRender lays out returned material and releases an optional host-owned handle on detach.
 
 Not yet implemented:
-- Concrete provider-view adapters and ArkUI components for Banner/native/feed. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; those need different mount paths behind this contract.
+- Concrete provider-view adapters that connect each vendor SDK's actual banner/feed objects to `AdViewHost`. The V2 implementation confirms Huawei Banner is a provider-rendered AdsKit component, while CSJ and Tencent feed ads use native-express/native-ad objects; those need different mount paths behind this contract.
 - Huawei splash and UI-rendered banner/native/feed formats. Huawei splash and feed in V2 depend on host-rendered ArkUI components; V3 needs a separate render-host contract rather than pretending they are ordinary full-screen handles.
 - Automatic OAID/privacy-consent integration; the host must gate initialization/load on its consent flow.
 - Local HarmonyOS compilation and device validation.
+
+## Unified ArkUI view host
+
+`AdViewHost` is the single public host component. Use `kind: AdViewKind.Banner` for a provider component that owns its own loading/refresh lifecycle, `kind: AdViewKind.Feed` for a loaded provider feed view, and `kind: AdViewKind.SelfRender` for native material rendered by the host. Vendor-specific ArkUI content is supplied with the `providerContent` builder slot; no vendor SDK type leaks into the public API.
+
+```ts
+import { AdViewHost, AdViewKind, AdNativeMaterial } from '@zysdk/ad-core-v3';
+
+// Host-rendered native material:
+AdViewHost({
+  kind: AdViewKind.SelfRender,
+  material: nativeMaterial
+})
+
+// Provider-rendered Banner: the vendor component owns loading, refresh and close.
+AdViewHost({
+  kind: AdViewKind.Banner,
+  onBannerAppear: () => bannerController.load(),
+  onBannerDisappear: () => bannerController.dispose(),
+  providerContent: (): void => {
+    // Place the provider's ArkUI banner component here.
+    // The provider component manages its own ad lifecycle.
+  }
+})
+
+// Provider-rendered Feed: the host calls handle.mount() and handle.destroy().
+AdViewHost({
+  kind: AdViewKind.Feed,
+  handle: feedViewHandle,
+  providerContent: (): void => {
+    // Place the provider's ArkUI feed node/component here.
+  }
+})
+```
+
+The host is a rendering/lifecycle boundary, not yet a concrete vendor bridge. Each provider adapter still needs to provide the correct SDK-specific banner/feed node or material before that format is production-ready.
 
 ## Provider setup
 
