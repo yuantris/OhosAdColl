@@ -2,7 +2,7 @@
 
 AdCoreV3 is a clean redesign of the HarmonyOS advertising SDK. It is developed independently from AdCore and AdCoreV2; V2 compatibility is not a design constraint.
 
-## Current status: Core lifecycle, alpha.2
+## Current status: SDK facade and core lifecycle, alpha.3
 
 Implemented:
 - Public format, request, error, result, and handle contracts.
@@ -11,6 +11,8 @@ Implemented:
 - Serial waterfall orchestrator with a shared request deadline.
 - Late-handle cleanup when a timed-out or cancelled adapter eventually returns.
 - SDK-owned managed handle enforcing one show, lifecycle callback forwarding, and idempotent destruction.
+- Public `AdCore` facade for initialization, adapter registration, loading, and cancellation by request ID.
+- SDK default timeout with per-request override, plus facade self-tests.
 - `runAdCoreSelfTests()` covering waterfall fallback, managed handle lifecycle, timeout, cancellation, and late cleanup.
 - Fake adapter/handle fixtures for deterministic integration testing.
 

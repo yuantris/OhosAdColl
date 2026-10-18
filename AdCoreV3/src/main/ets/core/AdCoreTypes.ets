@@ -53,7 +53,7 @@ export class AdRequest {
     requestId: string,
     format: AdFormat,
     placementId: string,
-    timeoutMs: number = 10000,
+    timeoutMs: number = 0,
     extras: Map<string, string> = new Map<string, string>()
   ) {
     this.requestId = requestId;
