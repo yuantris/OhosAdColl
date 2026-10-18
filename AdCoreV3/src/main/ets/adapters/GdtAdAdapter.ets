@@ -8,11 +8,11 @@ import {
   GDTRewardAd,
   GDTSplashAd
 } from '@gdt/gdt-union-sdk';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
 import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
+import { AdProviderSdkRegistry } from './AdProviderSdkRegistry';
 
 /** Tencent GDT adapter. Vendor callbacks are translated into V3 lifecycle events. */
 export class GdtAdAdapter implements AdAdapter {
@@ -40,8 +40,10 @@ export class GdtAdAdapter implements AdAdapter {
     if (this.config.appId.length === 0) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'GDT appId must be configured.', this.id));
     }
-    GDTAdSDK.init(this.runtime.context, { appId: this.config.appId });
-    this.initPromise = GDTAdSDK.start().then((): void => {}).catch((error: BusinessError) => {
+    this.initPromise = AdProviderSdkRegistry.ensure(this.id, this.config.appId, (): Promise<void> => {
+      GDTAdSDK.init(this.runtime.context, { appId: this.config.appId });
+      return GDTAdSDK.start().then((): void => {});
+    }).catch((error: Error) => {
       this.initPromise = null;
       throw new AdError(AdErrorCode.LoadFailed, 'GDT SDK initialization failed: ' +
         (error instanceof Error ? error.message : String(error)), this.id);

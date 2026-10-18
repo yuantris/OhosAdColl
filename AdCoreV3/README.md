@@ -63,7 +63,7 @@ AdViewHost({
 })
 ```
 
-The host is a rendering/lifecycle boundary. Pangle/GDT feed adapters now return provider-owned `NodeController` instances, and `AdViewHost` mounts them with `NodeContainer`. Local HarmonyOS compilation and device validation are still required.
+The host is a rendering/lifecycle boundary. Pangle/GDT feed adapters return provider-owned `NodeController` instances, and `AdViewHost` mounts them with `NodeContainer`. Feed adapters require the same `AdProviderConfig` as their full-screen adapter; a shared registry coalesces startup and rejects conflicting app configuration. Local HarmonyOS compilation and device validation are still required.
 
 ## Provider setup
 
@@ -73,13 +73,17 @@ The host app obtains its UIAbilityContext, UIContext, and window.WindowStage, th
 import {
   AdCore, AdCoreConfig, AdFormat, AdRequest,
   AdProviderConfig, AdProviderRuntime,
-  PangleAdAdapter, GdtAdAdapter, HuaweiAdAdapter
+  PangleAdAdapter, GdtAdAdapter, HuaweiAdAdapter,
+  PangleFeedViewAdapter, GdtFeedViewAdapter
 } from '@zysdk/ad-core-v3';
 
 const runtime = new AdProviderRuntime(abilityContext, uiContext, windowStage);
 const core = new AdCore();
 core.registerAdapter(new PangleAdAdapter(runtime, new AdProviderConfig(pangleAppId, debug)));
 core.registerAdapter(new GdtAdAdapter(runtime, new AdProviderConfig(gdtAppId, debug)));
+// View adapters share the same SDK initialization registry and app configuration.
+const pangleViewAdapter = new PangleFeedViewAdapter(runtime, new AdProviderConfig(pangleAppId, debug));
+const gdtViewAdapter = new GdtFeedViewAdapter(runtime, new AdProviderConfig(gdtAppId, debug));
 core.registerAdapter(new HuaweiAdAdapter(runtime));
 core.initialize(new AdCoreConfig(10000, debug));
 

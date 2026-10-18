@@ -21,3 +21,5 @@ export { AdViewHost, AdViewKind } from './src/main/ets/components/AdViewHost';
 export { HuaweiBannerAd } from './src/main/ets/components/HuaweiBannerAd';
 
 export { PangleFeedViewAdapter, GdtFeedViewAdapter } from './src/main/ets/adapters/NativeFeedAdapters';
+
+export { AdProviderSdkRegistry } from './src/main/ets/adapters/AdProviderSdkRegistry';

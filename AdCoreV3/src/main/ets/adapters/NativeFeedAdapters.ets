@@ -4,7 +4,9 @@ import {
   AdSlotBuilder,
   CSJAdSdk,
   CSJNativeExpressAd,
-  NativeExpressAdListener
+  NativeExpressAdListener,
+  SDKConfig,
+  SDKConfigBuilder
 } from '@csj/openadsdk';
 import {
   GDTAdLoadConfig,
@@ -14,9 +16,11 @@ import {
   GDTMultiAdLoadListener,
   GDTNativeAd
 } from '@gdt/gdt-union-sdk';
-import { AdError, AdErrorCode, AdFormat, AdRequest } from '../core/AdCoreTypes';
+import { AdError, AdErrorCode, AdFormat } from '../core/AdCoreTypes';
 import { AdNativeMaterial, AdRenderMode, AdViewAdapter, AdViewHandle, AdViewLifecycleListener, AdViewLoadRequest } from '../core/AdViewTypes';
-import { AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
+import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
+import { AdProviderSdkRegistry } from './AdProviderSdkRegistry';
+import { CsjPrivacyController } from './CsjPrivacyController';
 
 class NativeFeedViewHandle implements AdViewHandle {
   readonly providerId: string;
@@ -86,9 +90,31 @@ class NativeFeedViewHandle implements AdViewHandle {
 export class PangleFeedViewAdapter implements AdViewAdapter {
   readonly id: string = 'pangle';
   private readonly runtime: AdProviderRuntime;
+  private readonly config: AdProviderConfig;
+  private initPromise: Promise<void> | null = null;
 
-  constructor(runtime: AdProviderRuntime) {
+  constructor(runtime: AdProviderRuntime, config: AdProviderConfig) {
     this.runtime = runtime;
+    this.config = config;
+  }
+
+  private ensureInitialized(): Promise<void> {
+    if (this.initPromise !== null) { return this.initPromise; }
+    if (this.config.appId.length === 0) {
+      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Pangle appId must be configured.', this.id));
+    }
+    this.initPromise = AdProviderSdkRegistry.ensure(this.id, this.config.appId + ':' + String(this.config.debug), (): Promise<void> => {
+      const sdkConfig: SDKConfig = new SDKConfigBuilder().appId(this.config.appId).allowShowNotify(true)
+        .customController(new CsjPrivacyController()).debug(this.config.debug).build();
+      CSJAdSdk.init(this.runtime.context, sdkConfig);
+      return CSJAdSdk.start().then((): void => {
+        if (!CSJAdSdk.isSdkReady()) { throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK did not become ready.', this.id); }
+      });
+    }).catch((error: Error) => {
+      this.initPromise = null;
+      throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK initialization failed: ' + String(error), this.id);
+    });
+    return this.initPromise;
   }
 
   loadView(request: AdViewLoadRequest): Promise<AdViewHandle> {
@@ -99,7 +125,7 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
     if (placementId.length === 0) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Pangle placement ID is empty.', this.id));
     }
-    return new Promise((resolve, reject) => {
+    return this.ensureInitialized().then(() => new Promise<AdViewHandle>((resolve, reject) => {
       let settled = false;
       const slot = new AdSlotBuilder()
         .setCodeId(placementId)
@@ -142,7 +168,7 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
         }
       };
       CSJAdSdk.getAdCreator().loadExpressFeedAd(slot, listener);
-    });
+    }));
   }
 }
 
@@ -150,9 +176,27 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
 export class GdtFeedViewAdapter implements AdViewAdapter {
   readonly id: string = 'gdt';
   private readonly runtime: AdProviderRuntime;
+  private readonly config: AdProviderConfig;
+  private initPromise: Promise<void> | null = null;
 
-  constructor(runtime: AdProviderRuntime) {
+  constructor(runtime: AdProviderRuntime, config: AdProviderConfig) {
     this.runtime = runtime;
+    this.config = config;
+  }
+
+  private ensureInitialized(): Promise<void> {
+    if (this.initPromise !== null) { return this.initPromise; }
+    if (this.config.appId.length === 0) {
+      return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'GDT appId must be configured.', this.id));
+    }
+    this.initPromise = AdProviderSdkRegistry.ensure(this.id, this.config.appId, (): Promise<void> => {
+      GDTAdSDK.init(this.runtime.context, { appId: this.config.appId });
+      return GDTAdSDK.start().then((): void => {});
+    }).catch((error: Error) => {
+      this.initPromise = null;
+      throw new AdError(AdErrorCode.LoadFailed, 'GDT SDK initialization failed: ' + String(error), this.id);
+    });
+    return this.initPromise;
   }
 
   loadView(request: AdViewLoadRequest): Promise<AdViewHandle> {
@@ -163,7 +207,7 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
     if (placementId.length === 0) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'GDT placement ID is empty.', this.id));
     }
-    return new Promise((resolve, reject) => {
+    return this.ensureInitialized().then(() => new Promise<AdViewHandle>((resolve, reject) => {
       let settled = false;
       const config: GDTAdLoadConfig = {
         posId: placementId,
@@ -210,6 +254,6 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
         }
       };
       GDTAdSDK.getAdLoader().loadNativeAd(config, listener);
-    });
+    }));
   }
 }

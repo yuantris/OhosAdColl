@@ -2,13 +2,13 @@ import {
   AdSlotBuilder, CSJAdSdk, CSJRewardAd, CSJSplashAd, CSJSplashAdLoadListener,
   CSJSplashAdLoadParam, FullAdLoadListener, RewardAdLoadListener, SDKConfig, SDKConfigBuilder
 } from '@csj/openadsdk';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 import { AdAdapter } from '../core/AdAdapter';
 import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
 import { AdProviderConfig, AdProviderRuntime, resolvePlacementId } from './AdProviderRuntime';
 import { AdVendorHandle } from './AdVendorHandle';
 import { CsjPrivacyController } from './CsjPrivacyController';
+import { AdProviderSdkRegistry } from './AdProviderSdkRegistry';
 
 export class PangleAdAdapter implements AdAdapter {
   readonly id: string = 'pangle';
@@ -35,13 +35,15 @@ export class PangleAdAdapter implements AdAdapter {
     if (this.config.appId.length === 0) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Pangle appId must be configured.', this.id));
     }
-    const sdkConfig: SDKConfig = new SDKConfigBuilder()
-      .appId(this.config.appId).allowShowNotify(true)
-      .customController(new CsjPrivacyController()).debug(this.config.debug).build();
-    CSJAdSdk.init(this.runtime.context, sdkConfig);
-    this.initPromise = CSJAdSdk.start().then((): void => {
-      if (!CSJAdSdk.isSdkReady()) { throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK did not become ready.', this.id); }
-    }).catch((error: BusinessError) => {
+    this.initPromise = AdProviderSdkRegistry.ensure(this.id, this.config.appId + ':' + String(this.config.debug), (): Promise<void> => {
+      const sdkConfig: SDKConfig = new SDKConfigBuilder()
+        .appId(this.config.appId).allowShowNotify(true)
+        .customController(new CsjPrivacyController()).debug(this.config.debug).build();
+      CSJAdSdk.init(this.runtime.context, sdkConfig);
+      return CSJAdSdk.start().then((): void => {
+        if (!CSJAdSdk.isSdkReady()) { throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK did not become ready.', this.id); }
+      });
+    }).catch((error: Error) => {
       this.initPromise = null;
       throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK initialization failed: ' +
         (error instanceof Error ? error.message : String(error)), this.id);
