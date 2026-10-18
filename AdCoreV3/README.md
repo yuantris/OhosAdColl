@@ -2,63 +2,58 @@
 
 AdCoreV3 is a clean redesign of the HarmonyOS advertising SDK. It is developed independently from AdCore and AdCoreV2; V2 compatibility is not a design constraint.
 
+## Current status: Core foundation, alpha.1
+
+Implemented:
+- Public format, request, error, result, and handle contracts.
+- Request-scoped lifecycle state machine.
+- Vendor adapter interface with format capability declarations.
+- Serial waterfall orchestrator with a shared request deadline.
+- Late-handle cleanup when a timed-out or cancelled adapter eventually returns.
+- Fake adapter/handle fixtures for deterministic integration testing.
+
+Not yet implemented:
+- Vendor SDK adapters.
+- Format-specific UI components and public format facades.
+- Cache, telemetry pipeline, and integration tests.
+- Local HarmonyOS compilation; this commit was authored through GitHub and needs verification in DevEco Studio.
+
 ## Design goals
 
-- Request-scoped state: every load/show flow owns an independent session. No process-wide mutable current-ad state or global request queue.
-- Explicit lifecycle: a session moves through a validated state machine; late and duplicate vendor callbacks cannot revive a terminal session.
-- Orchestration owns policy: waterfall order, timeout, cancellation, fallback, telemetry, and retry policy live above vendor adapters.
-- Adapters own vendor details: an adapter translates one vendor SDK's API and callbacks into the stable V3 contract. It does not run the waterfall.
-- Format-specific public APIs: splash, interstitial, rewarded, banner, and native ads expose only operations meaningful to that format.
-- Clear resource ownership: each loaded handle has one owner and an explicit destroy/release path.
-- Testable core: core orchestration depends on interfaces and can be tested with fake adapters without initializing a vendor SDK.
-- HarmonyOS-native integration: platform context, UI-thread dispatch, lifecycle observation, and UI hosting are isolated behind platform services.
+- Every load/show flow owns an independent request session.
+- Terminal states cannot return to active states.
+- Orchestration owns timeout, cancellation, fallback, and waterfall policy.
+- Adapters translate vendor APIs and callbacks; they do not run the waterfall.
+- Vendor types never leak into the public API.
+- Every loaded handle has one owner and an explicit destroy/release path.
 
-## Proposed layers
+## Initial layout
 
-1. **Public API** — SDK initialization, immutable configuration, format-specific entry points.
-2. **Orchestrator** — request sessions, waterfall, deadlines, fallback, and cancellation.
-3. **Core contracts** — request/result/error models, adapter capability declarations, handles, and lifecycle state.
-4. **Vendor adapters** — CSJ, GDT, Huawei, and future providers; no vendor types leak into public APIs.
-5. **Platform services** — context, main-thread dispatch, app foreground/background, clock, logging.
-6. **UI components** — splash/banner/native host components that bind to handles without owning waterfall policy.
+- `Index.ets` — public exports
+- `src/main/ets/core/` — request models, adapter contract, lifecycle state machine
+- `src/main/ets/orchestration/` — waterfall and timeout/cancellation
+- `src/main/ets/adapters/` — vendor-specific adapters (next milestone)
+- `src/main/ets/platform/` — HarmonyOS runtime services (next milestone)
+- `src/main/ets/formats/` — splash, interstitial, rewarded, banner, native (next milestone)
+- `src/main/ets/telemetry/` — lifecycle events and diagnostics (next milestone)
+- `src/main/ets/testing/` — fake adapters and fixtures
 
-## Lifecycle invariants
+## Lifecycle
 
-- Created → Loading → Ready → Showing → Completed is a valid happy path; formats that do not require an explicit show step may use a documented alternative.
-- Failed, Cancelled, and Destroyed are terminal.
-- show() is rejected unless the handle is ready and the format supports showing.
-- A timeout/cancellation wins once; late callbacks are ignored.
-- A vendor handle is destroyed at most once.
-- Every public request resolves exactly once with a typed result or typed failure.
+The core currently models Created, Loading, Ready, Showing, Completed, Failed, Cancelled, and Destroyed. The orchestrator handles load and ready states; a later handle/session controller will formalize show and destroy transitions.
 
-## Initial directory plan
+## Milestones
 
-- AdCoreV3/Index.ets — public exports
-- AdCoreV3/src/main/ets/api/ — public format-specific API
-- AdCoreV3/src/main/ets/core/ — session, state machine, result/error, adapter contracts
-- AdCoreV3/src/main/ets/orchestration/ — waterfall and timeout/cancellation
-- AdCoreV3/src/main/ets/adapters/ — vendor-specific adapters
-- AdCoreV3/src/main/ets/platform/ — HarmonyOS runtime services
-- AdCoreV3/src/main/ets/formats/ — splash, interstitial, rewarded, banner, native
-- AdCoreV3/src/main/ets/telemetry/ — structured lifecycle events and diagnostics
-- AdCoreV3/src/main/ets/testing/ — fake adapters and test fixtures
-
-## Implementation milestones
-
-1. **Core foundation** — models, lifecycle state machine, adapter contract, request session, fake-adapter tests.
-2. **Orchestration** — serial waterfall, per-request timeout/cancellation, deterministic fallback, exactly-once completion.
-3. **Vendor integration** — add providers behind adapters, one provider at a time.
-4. **Ad formats** — rewarded/interstitial first, then splash and component-hosted formats.
-5. **Production hardening** — cache ownership/TTL, privacy gates, diagnostics, lifecycle cleanup, integration documentation.
+1. Core contracts, lifecycle state machine, request session, and serial waterfall.
+2. Fake adapter and tests for timeout, cancellation, duplicate/late callbacks, and cleanup.
+3. Vendor integrations, one adapter at a time.
+4. Format-specific APIs and UI host components.
+5. Cache ownership/TTL, privacy gates, telemetry, diagnostics, and integration docs.
 
 ## Non-goals for the first milestone
 
-- No V2 API compatibility layer.
-- No parallel bidding before serial waterfall and cancellation semantics are stable.
-- No vendor-specific types in the public API.
+- No V2 compatibility layer.
+- No parallel bidding until serial waterfall and cancellation semantics are stable.
+- No vendor-specific types in public API.
 - No global queue that serializes unrelated requests.
-- No automatic reward granting solely from a client-side completion callback; reward verification remains an application/server policy.
-
-## Engineering rule
-
-Each milestone must be independently reviewable. Vendor integration should begin only after the core contracts and fake-adapter tests define the expected behavior.
+- No client-only guarantee of reward fulfillment; reward verification remains an application/server policy.

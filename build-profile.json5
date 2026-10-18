@@ -86,6 +86,10 @@
       "name": "adCoreV2",
       "srcPath": "./AdCoreV2"
     },
+    {
+      "name": "adCoreV3",
+      "srcPath": "./AdCoreV3"
+    },
     //    {
     //      "name": "zyAds",
     //      "srcPath": "./zyAds",

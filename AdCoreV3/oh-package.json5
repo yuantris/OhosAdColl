@@ -1,0 +1,10 @@
+{
+  "name": "@zysdk/ad-core-v3",
+  "version": "3.0.0-alpha.1",
+  "description": "掌赢 HarmonyOS 广告 SDK V3 核心底座",
+  "main": "Index.ets",
+  "author": "zy_xfy",
+  "license": "Apache-2.0",
+  "keywords": ["SDK", "OpenHarmony", "HarmonyOS", "Advertising"],
+  "tags": ["SDK"]
+}
