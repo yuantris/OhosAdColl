@@ -1,5 +1,5 @@
 import { AdAdapter } from '../core/AdAdapter';
-import { AdError, AdErrorCode, AdFormat, AdHandle, AdRequest } from '../core/AdCoreTypes';
+import { AdError, AdErrorCode, AdFormat, AdHandle, AdHandleLifecycleListener, AdRequest } from '../core/AdCoreTypes';
 
 /** Deterministic fixture for integration tests and manual playgrounds. */
 export class FakeAdHandle implements AdHandle {
@@ -8,6 +8,7 @@ export class FakeAdHandle implements AdHandle {
   readonly format: AdFormat;
   private destroyed: boolean = false;
   private shown: boolean = false;
+  private lifecycleListener: AdHandleLifecycleListener | null = null;
   destroyCount: number = 0;
 
   constructor(id: string, adapterId: string, format: AdFormat) {
@@ -19,10 +20,22 @@ export class FakeAdHandle implements AdHandle {
   get isDestroyed(): boolean { return this.destroyed; }
   get isShown(): boolean { return this.shown; }
 
+  setLifecycleListener(listener: AdHandleLifecycleListener): void {
+    this.lifecycleListener = listener;
+  }
+
   async show(): Promise<void> {
     if (this.destroyed) { throw new Error('Cannot show a destroyed ad handle.'); }
     if (this.shown) { throw new Error('This ad handle has already been shown.'); }
     this.shown = true;
+  }
+
+  emitCompleted(): void {
+    if (this.lifecycleListener !== null) { this.lifecycleListener.onCompleted(); }
+  }
+
+  emitFailed(error: AdError): void {
+    if (this.lifecycleListener !== null) { this.lifecycleListener.onFailed(error); }
   }
 
   destroy(): void {

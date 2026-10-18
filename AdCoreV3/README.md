@@ -2,7 +2,7 @@
 
 AdCoreV3 is a clean redesign of the HarmonyOS advertising SDK. It is developed independently from AdCore and AdCoreV2; V2 compatibility is not a design constraint.
 
-## Current status: Core foundation, alpha.1
+## Current status: Core lifecycle, alpha.2
 
 Implemented:
 - Public format, request, error, result, and handle contracts.
@@ -10,13 +10,19 @@ Implemented:
 - Vendor adapter interface with format capability declarations.
 - Serial waterfall orchestrator with a shared request deadline.
 - Late-handle cleanup when a timed-out or cancelled adapter eventually returns.
+- SDK-owned managed handle enforcing one show, lifecycle callback forwarding, and idempotent destruction.
+- `runAdCoreSelfTests()` covering waterfall fallback, managed handle lifecycle, timeout, cancellation, and late cleanup.
 - Fake adapter/handle fixtures for deterministic integration testing.
 
 Not yet implemented:
-- Vendor SDK adapters.
+- Vendor SDK adapters, and local execution of the self-tests.
 - Format-specific UI components and public format facades.
 - Cache, telemetry pipeline, and integration tests.
 - Local HarmonyOS compilation; this commit was authored through GitHub and needs verification in DevEco Studio.
+
+## Adapter lifecycle contract
+
+Adapters return a raw vendor-backed handle. If it implements `setLifecycleListener`, the managed wrapper subscribes and receives completion/failure events. Vendor close/failure callbacks should forward to that listener; vendor types remain inside the adapter.
 
 ## Design goals
 
@@ -40,7 +46,7 @@ Not yet implemented:
 
 ## Lifecycle
 
-The core currently models Created, Loading, Ready, Showing, Completed, Failed, Cancelled, and Destroyed. The orchestrator handles load and ready states; a later handle/session controller will formalize show and destroy transitions.
+The request session models Created, Loading, Ready, Showing, Completed, Failed, Cancelled, and Destroyed. `AdManagedHandle` now owns the per-ad lifecycle after loading.
 
 ## Milestones
 

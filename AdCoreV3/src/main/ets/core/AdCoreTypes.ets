@@ -64,12 +64,18 @@ export class AdRequest {
   }
 }
 
+export interface AdHandleLifecycleListener {
+  onCompleted(): void;
+  onFailed(error: AdError): void;
+}
+
 export interface AdHandle {
   readonly id: string;
   readonly adapterId: string;
   readonly format: AdFormat;
   show(): Promise<void>;
   destroy(): void;
+  setLifecycleListener?(listener: AdHandleLifecycleListener): void;
 }
 
 export class AdLoadResult {
