@@ -15,7 +15,9 @@ export class AdProviderSdkRegistry {
       if (existing.configKey !== configKey) {
         return Promise.reject(new Error('SDK ' + providerId + ' was already configured with a different app configuration.'));
       }
-      return existing.promise;
+      return existing.promise.then((): void => {
+        AdPrivacyGate.requireConsent(providerId);
+      });
     }
 
     const promise = initialize().catch((error: Error) => {
@@ -26,6 +28,8 @@ export class AdProviderSdkRegistry {
       throw error;
     });
     AdProviderSdkRegistry.entries.set(providerId, { configKey: configKey, promise: promise });
-    return promise;
+    return promise.then((): void => {
+      AdPrivacyGate.requireConsent(providerId);
+    });
   }
 }

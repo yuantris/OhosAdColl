@@ -1,6 +1,6 @@
 import { AdCore } from './AdCore';
 import { AdCoreConfig } from './AdCoreConfig';
-import { AdError, AdErrorCode, AdLoadResult, AdRequest } from './AdCoreTypes';
+import { AdError, AdErrorCode, AdHandle, AdLoadResult, AdRequest } from './AdCoreTypes';
 import { AdPrivacyGate, AdPrivacyState } from './AdPrivacyGate';
 import { AdViewAdapter, AdViewHandle, AdViewLoadRequest } from './AdViewTypes';
 import { AdProviderConfig, AdProviderRuntime } from '../adapters/AdProviderRuntime';
@@ -15,6 +15,8 @@ export class AdCoreFacade {
   private readonly coreConfig: AdCoreConfig;
   private readonly viewAdapters: Map<string, AdViewAdapter> = new Map<string, AdViewAdapter>();
   private initialized: boolean = false;
+  private readonly activeViewHandles: AdViewHandle[] = [];
+  private readonly activeFullScreenHandles: AdHandle[] = [];
 
   constructor(runtime: AdProviderRuntime, pangleConfig: AdProviderConfig, gdtConfig: AdProviderConfig,
     coreConfig: AdCoreConfig = new AdCoreConfig()) {
@@ -43,6 +45,14 @@ export class AdCoreFacade {
   revokeConsent(): void {
     AdPrivacyGate.setConsent(false);
     this.initialized = false;
+    this.activeViewHandles.forEach((handle: AdViewHandle) => {
+      try { handle.destroy(); } catch (_) {}
+    });
+    this.activeViewHandles.length = 0;
+    this.activeFullScreenHandles.forEach((handle: AdHandle) => {
+      try { handle.destroy(); } catch (_) {}
+    });
+    this.activeFullScreenHandles.length = 0;
   }
 
   get privacyState(): AdPrivacyState { return AdPrivacyGate.state; }
@@ -52,7 +62,16 @@ export class AdCoreFacade {
       return AdLoadResult.failed(new AdError(AdErrorCode.InvalidState,
         'Initialize the facade after explicit privacy consent before requesting ads.', 'facade'));
     }
-    return this.core.load(request);
+    const result = await this.core.load(request);
+    if (AdPrivacyGate.state !== AdPrivacyState.Granted || !this.initialized) {
+      result.handle?.destroy();
+      return AdLoadResult.failed(new AdError(AdErrorCode.InvalidState,
+        'Privacy consent was withdrawn while loading the ad.', 'facade'));
+    }
+    if (result.success && result.handle !== null) {
+      this.activeFullScreenHandles.push(result.handle);
+    }
+    return result;
   }
 
   async loadView(providerId: string, request: AdViewLoadRequest): Promise<AdViewHandle> {
@@ -65,6 +84,13 @@ export class AdCoreFacade {
     if (adapter === undefined) {
       throw new AdError(AdErrorCode.NoAdapter, 'No view adapter registered for provider: ' + providerId, providerId);
     }
-    return adapter.loadView(request);
+    const handle = await adapter.loadView(request);
+    if (AdPrivacyGate.state !== AdPrivacyState.Granted || !this.initialized) {
+      handle.destroy();
+      throw new AdError(AdErrorCode.InvalidState,
+        'Privacy consent was withdrawn while loading the ad view.', providerId);
+    }
+    this.activeViewHandles.push(handle);
+    return handle;
   }
 }

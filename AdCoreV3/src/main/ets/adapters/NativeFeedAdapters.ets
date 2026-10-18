@@ -109,6 +109,7 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
         .customController(new CsjPrivacyController()).debug(this.config.debug).build();
       CSJAdSdk.init(this.runtime.context, sdkConfig);
       return CSJAdSdk.start().then((): void => {
+        AdPrivacyGate.requireConsent(this.id);
         if (!CSJAdSdk.isSdkReady()) { throw new AdError(AdErrorCode.LoadFailed, 'Pangle SDK did not become ready.', this.id); }
       });
     }).catch((error: Error) => {
@@ -127,8 +128,16 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
     if (placementId.length === 0) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'Pangle placement ID is empty.', this.id));
     }
-    return this.ensureInitialized().then(() => new Promise<AdViewHandle>((resolve, reject) => {
+    return this.ensureInitialized().then(() => {
+      AdPrivacyGate.requireConsent(this.id);
+      return new Promise<AdViewHandle>((resolve, reject) => {
       let settled = false;
+      const timeoutMs = request.request.timeoutMs > 0 ? request.request.timeoutMs : 15000;
+      const timeoutId = setTimeout((): void => {
+        if (settled) { return; }
+        settled = true;
+        reject(new AdError(AdErrorCode.Timeout, 'Pangle feed request timed out.', this.id));
+      }, timeoutMs);
       const slot = new AdSlotBuilder()
         .setCodeId(placementId)
         .setAcceptSize(Math.max(1, request.size.widthVp), Math.max(0, request.size.heightVp))
@@ -138,16 +147,27 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
         onError: (code: number, message: string): void => {
           if (settled) { return; }
           settled = true;
+          clearTimeout(timeoutId);
           reject(new AdError(AdErrorCode.LoadFailed, '[' + code + '] ' + message, this.id));
         },
         onNativeExpressAdLoad: (ads: ArrayList<CSJNativeExpressAd>): void => {
-          if (settled) { return; }
+          if (settled || AdPrivacyGate.state !== 'granted') {
+            for (let i = 0; i < ads.length; i++) { ads[i].destroy(); }
+            if (!settled) {
+              settled = true;
+              clearTimeout(timeoutId);
+              reject(new AdError(AdErrorCode.InvalidState, 'Privacy consent was withdrawn while loading Pangle feed.', this.id));
+            }
+            return;
+          }
           if (ads.length === 0) {
             settled = true;
+            clearTimeout(timeoutId);
             reject(new AdError(AdErrorCode.LoadFailed, 'Pangle returned an empty feed list.', this.id));
             return;
           }
           settled = true;
+          clearTimeout(timeoutId);
           const ad = ads[0];
           const node = ad.getAdComponent();
           if (node === undefined || node === null) {
@@ -170,7 +190,8 @@ export class PangleFeedViewAdapter implements AdViewAdapter {
         }
       };
       CSJAdSdk.getAdCreator().loadExpressFeedAd(slot, listener);
-    }));
+      });
+    });
   }
 }
 
@@ -193,7 +214,9 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
     }
     this.initPromise = AdProviderSdkRegistry.ensure(this.id, this.config.appId, (): Promise<void> => {
       GDTAdSDK.init(this.runtime.context, { appId: this.config.appId });
-      return GDTAdSDK.start().then((): void => {});
+      return GDTAdSDK.start().then((): void => {
+        AdPrivacyGate.requireConsent(this.id);
+      });
     }).catch((error: Error) => {
       this.initPromise = null;
       throw new AdError(AdErrorCode.LoadFailed, 'GDT SDK initialization failed: ' + String(error), this.id);
@@ -210,21 +233,39 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
     if (placementId.length === 0) {
       return Promise.reject(new AdError(AdErrorCode.InvalidRequest, 'GDT placement ID is empty.', this.id));
     }
-    return this.ensureInitialized().then(() => new Promise<AdViewHandle>((resolve, reject) => {
+    return this.ensureInitialized().then(() => {
+      AdPrivacyGate.requireConsent(this.id);
+      return new Promise<AdViewHandle>((resolve, reject) => {
       let settled = false;
+      const timeoutMs = request.request.timeoutMs > 0 ? request.request.timeoutMs : 15000;
+      const timeoutId = setTimeout((): void => {
+        if (settled) { return; }
+        settled = true;
+        reject(new AdError(AdErrorCode.Timeout, 'GDT feed request timed out.', this.id));
+      }, timeoutMs);
       const config: GDTAdLoadConfig = {
         posId: placementId,
         adSize: new GDTAdSize(GDTAdSize.FULL_WIDTH, GDTAdSize.AUTO_HEIGHT)
       };
       const listener: GDTMultiAdLoadListener<GDTNativeAd> = {
         onAdLoad: (ads: Array<GDTNativeAd>): void => {
-          if (settled) { return; }
+          if (settled || AdPrivacyGate.state !== 'granted') {
+            ads.forEach((ad: GDTNativeAd) => ad.destroy());
+            if (!settled) {
+              settled = true;
+              clearTimeout(timeoutId);
+              reject(new AdError(AdErrorCode.InvalidState, 'Privacy consent was withdrawn while loading GDT feed.', this.id));
+            }
+            return;
+          }
           if (ads.length === 0) {
             settled = true;
+            clearTimeout(timeoutId);
             reject(new AdError(AdErrorCode.LoadFailed, 'GDT returned an empty feed list.', this.id));
             return;
           }
           settled = true;
+          clearTimeout(timeoutId);
           const ad = ads[0];
           const node = ad.getAdComponent();
           if (node === undefined || node === null) {
@@ -253,10 +294,12 @@ export class GdtFeedViewAdapter implements AdViewAdapter {
         onError: (error: GDTError): void => {
           if (settled) { return; }
           settled = true;
+          clearTimeout(timeoutId);
           reject(new AdError(AdErrorCode.LoadFailed, '[' + error.code + '] ' + error.message, this.id));
         }
       };
       GDTAdSDK.getAdLoader().loadNativeAd(config, listener);
-    }));
+      });
+    });
   }
 }
