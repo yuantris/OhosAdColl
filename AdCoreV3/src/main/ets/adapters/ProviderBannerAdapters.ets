@@ -220,7 +220,7 @@ export class GdtBannerViewAdapter implements AdViewAdapter {
             ad.setRefresh(30);
             ad.setRenderListener({
               onRenderSuccess: (): void => { handle.loaded(); },
-              onRenderFail: (error: GDTError): void => { handle.failed(String(error.code), error.message); }
+              onRenderFail: (): void => { handle.failed('RENDER_FAILED', 'GDT Banner render failed.'); }
             });
             ad.setInteractionListener({
               onAdExposure: (): void => { handle.shown(); },
