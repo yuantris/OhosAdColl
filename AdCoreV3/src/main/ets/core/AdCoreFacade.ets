@@ -8,6 +8,7 @@ import { PangleAdAdapter } from '../adapters/PangleAdAdapter';
 import { GdtAdAdapter } from '../adapters/GdtAdAdapter';
 import { HuaweiAdAdapter } from '../adapters/HuaweiAdAdapter';
 import { PangleFeedViewAdapter, GdtFeedViewAdapter } from '../adapters/NativeFeedAdapters';
+import { PangleBannerViewAdapter, GdtBannerViewAdapter } from '../adapters/ProviderBannerAdapters';
 
 /** Single host-facing entry point. Constructor wiring does not initialize vendor SDKs. */
 export class AdCoreFacade {
@@ -27,9 +28,10 @@ export class AdCoreFacade {
     this.core.registerAdapter(new HuaweiAdAdapter(runtime));
     this.viewAdapters.set('pangle', new PangleFeedViewAdapter(runtime, pangleConfig));
     this.viewAdapters.set('gdt', new GdtFeedViewAdapter(runtime, gdtConfig));
+    this.viewAdapters.set('pangle:banner', new PangleBannerViewAdapter(runtime, pangleConfig));
+    this.viewAdapters.set('gdt:banner', new GdtBannerViewAdapter(runtime, gdtConfig));
   }
 
-  /** Call with true only after the user's affirmative action in the privacy UI. */
   initialize(consentGranted: boolean): void {
     AdPrivacyGate.setConsent(consentGranted);
     if (!consentGranted) {
@@ -41,7 +43,6 @@ export class AdCoreFacade {
     this.initialized = true;
   }
 
-  /** Blocks new requests after consent withdrawal; SDKs already loaded may not support unloading. */
   revokeConsent(): void {
     AdPrivacyGate.setConsent(false);
     this.initialized = false;
@@ -80,9 +81,10 @@ export class AdCoreFacade {
       throw new AdError(AdErrorCode.InvalidState,
         'Initialize the facade after explicit privacy consent before requesting ads.', 'facade');
     }
-    const adapter = this.viewAdapters.get(providerId);
+    const adapterKey = request.request.format === 'banner' ? providerId + ':banner' : providerId;
+    const adapter = this.viewAdapters.get(adapterKey);
     if (adapter === undefined) {
-      throw new AdError(AdErrorCode.NoAdapter, 'No view adapter registered for provider: ' + providerId, providerId);
+      throw new AdError(AdErrorCode.NoAdapter, 'No view adapter registered for provider/format: ' + adapterKey, providerId);
     }
     const handle = await adapter.loadView(request);
     if (AdPrivacyGate.state !== AdPrivacyState.Granted || !this.initialized) {
